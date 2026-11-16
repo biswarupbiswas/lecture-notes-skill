@@ -65,10 +65,12 @@ made.
 ## Step 2c — Course outcomes and CO–PO/PSO matrix (NBA)
 
 Follow `shared/nba-obe.md` §1–§4:
-- 4–6 COs, each one sentence with one measurable verb and a Bloom level, in the CO code format of `COURSE.md`.
-  The levels stay within the range for the year of study: L1–L3 for a first-year course (`shared/nba-obe.md` §1);
-- each CO states what students can do in a wider engineering, computing or data situation, not a mathematical
-  procedure (`shared/nba-obe.md` §1, "Scope of the verb"). Add to the units the applications the COs name;
+- 4–6 COs in the CO code format of `COURSE.md`, each built exactly as in `shared/nba-obe.md` §1: one sentence that
+  completes "At the end of the course, the student should be able to …", in the pattern
+  `<one action verb from §3> <a real-world system or problem> using <the mathematics>`, with a Bloom level.
+  The levels follow the year of study: mostly L1–L2 and a few L3 for a first-year course (`shared/nba-obe.md` §1);
+- the verb of every CO, at every level, points at a real-world system or problem, never at mathematics. Test each
+  CO with the table in `shared/nba-obe.md` §1 before proposing it. Add to the units the applications the COs name;
 - every unit serves at least one CO, and every CO is served by at least one unit. Show the CO(s) of each unit in
   the unit table;
 - the articulation matrix:
@@ -78,7 +80,7 @@ Follow `shared/nba-obe.md` §1–§4:
 - no justification section in the document. Check each non-empty cell against the course content, and name any
   doubtful cell in the report.
 
-If `COURSE.md` says `NBA: no`, write 4–6 plain COs with measurable verbs, and no matrix.
+If `COURSE.md` says `NBA: no`, write 4–6 COs built the same way (`shared/nba-obe.md` §1 and §3), and no matrix.
 
 ## Step 3 — Check
 
@@ -90,8 +92,9 @@ With code:
 - every CO appears in at least one unit, and every unit has a CO.
 
 By reading:
-- every CO starts with a measurable verb whose Bloom level matches its tag, and no CO is above the year's level;
-- every CO names a wider situation, not a procedure, and the units teach the applications it names;
+- every CO completes "the student should be able to …", has exactly one action verb, taken from `shared/nba-obe.md` §3,
+  and its Bloom level matches that verb and the year of study;
+- the object of every verb is a real-world system or problem, not mathematics, and the units teach it;
 - no PO is mapped without a real activity behind it, and no PSO is invented;
 - every topic belongs to the course level;
 - nothing is invented.

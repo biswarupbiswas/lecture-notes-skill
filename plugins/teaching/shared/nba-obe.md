@@ -11,35 +11,45 @@ assessments, in the form the NBA Self Assessment Report (SAR) expects.
 - **Number:** 4–6 COs per course, typically 5 or 6. Together they cover the whole syllabus, and they do not overlap.
 - **Label:** `CO1`, `CO2`, ... by default. If `COURSE.md` gives a CO code format, such as `C<course code>.<n>` as in
   `MA2101.1`, use that format everywhere.
-- **Form:** one sentence that completes "After this course, students will be able to …".
-  - Start with **one measurable action verb** from §3.
-  - Say what is acted on, and where useful under what condition or to what standard.
-  - Never use "know", "understand", "learn", "appreciate" or "be aware of": they cannot be measured.
-- **Scope of the verb:** a CO verb such as apply, solve, analyse or evaluate describes what students can do in a
-  wider engineering, computing or data situation. It does not describe carrying out a mathematical procedure.
-  - The object of the verb is the larger problem. The method is the means, named briefly at most.
-  - Good: "Apply linear systems and matrix methods to model and solve problems arising in engineering, computing and
-    data science."
-  - Not a CO: "Solve systems of linear equations by Gaussian elimination." Solving the system is one step inside a
-    larger problem. Procedures like this are tested by tutorial and exam questions under the CO, not stated as COs.
-  - Do not use the level name itself as an empty label, as in "Apply Gaussian elimination to solve a system".
-  - Every situation a CO names must be taught: the units must contain those applications.
-- **Bloom level:** give each CO the level of its verb (L1–L6). The highest level allowed depends on the year of
-  study (`Year` in `COURSE.md`; if it is missing, take it from the audience, or ask):
+- **Form:** one sentence that completes **"At the end of the course, the student should be able to …"**. A CO is a
+  capability the student takes away from the course, not a topic of the course.
+- **The pattern:** `<one action verb> <a real-world system or problem> using <the mathematics of the course>`.
+  - **One action verb, from the table in §3, and only one.** No second verb hidden in a purpose clause, as in
+    "Apply X to model and solve …" or "… to fit models and to compress images". Name the target with nouns instead:
+    "… to data fitting and image compression".
+  - **The verb points at the real world, never at mathematics, at every level, L1 to L6.** What is solved,
+    explained or described is an engineering, computing, data or physical system or problem. It is never a matrix,
+    a system of equations, a solution set, a transformation or another mathematical object.
+    Think of "Understand the nature of the sea" or "Explain how a weather prediction model works", not "Explain
+    eigenvalues".
+  - **The mathematics comes after "using"**, as the means. Name it briefly.
+  - Never use "know", "understand", "learn", "appreciate" or "be aware of" as the verb. "Understand" is the name of
+    level L2, not an action verb: an examiner cannot observe understanding, only an explanation or a description.
+- **Test every CO before proposing it:** read it after the stem "At the end of the course, the student should be
+  able to …", then ask what the object of the verb is. If it is a piece of mathematics, rewrite the CO.
+
+  | Not a CO | Why | A CO |
+  |---|---|---|
+  | Solve systems of linear equations by Gaussian elimination. | solves mathematics | Solve engineering problems with unknown parameters, such as fitting curves through measured points and balancing flows in networks, using systems of linear equations and matrix algebra. |
+  | Explain the structure of the solution set of a linear system using rank and the four fundamental subspaces. | explains mathematics with mathematics | Explain the degrees of freedom in underdetermined engineering and data models, such as flow networks and data sets with redundant features, using vector spaces, rank and the four fundamental subspaces. |
+  | Explain eigenvalues, eigenvectors and diagonalization. | a topic list with a verb in front | Explain how a web search engine ranks pages, using eigenvalues, eigenvectors and Markov chains. |
+  | Explain the long-term behaviour of iterative processes and Markov chains using eigenvalues. | Markov chains are mathematics too | (as above) |
+  | Apply least squares and the SVD to fit models to data and to compress images. | two verbs (fit, compress) | Solve data-fitting and image-compression problems using least squares, orthogonal projections and the singular value decomposition. |
+
+- **Level follows the verb, not ambition.** If a CO does not genuinely solve an outside problem, do not force an
+  application to reach L3: give it a lower-level verb such as Explain or Describe, still pointed at a real system.
+- **Bloom level:** give each CO the level of its verb (§3). The spread depends on the year of study (`Year` in
+  `COURSE.md`; if it is missing, take it from the audience, or ask):
 
   | Year of study | CO levels | Notes |
   |---|---|---|
-  | 1st year (basic courses) | L1–L3 | mostly L2–L3, at least one at L3; **no L4–L6** |
+  | 1st year (basic courses) | L1–L3 | **mostly L1–L2, a few at L3; no L4–L6** |
   | 2nd and 3rd year | L2–L5 | mostly L3–L4 |
   | Final year, electives, projects | L2–L6 | include L4–L6 |
 
   `COURSE.md` may override this table for a course.
-- **Assessable:** every CO must be testable in the course's assessments. Do not write a CO that no exam or tutorial
-  can measure.
-
-Example (numerical methods course):
-`CO3 (L3): Apply iterative methods to solve nonlinear models arising in engineering, such as equilibrium and
-design problems, and judge whether the computed solution can be trusted.`
+- **Taught and assessable:** every real-world situation a CO names must be taught in the units, and every CO must be
+  testable in the course's assessments.
 
 ## 2. CO–PO/PSO articulation matrix
 
@@ -65,14 +75,17 @@ design problems, and judge whether the computed solution can be trusted.`
 
 ## 3. Bloom's taxonomy levels and verbs (revised taxonomy)
 
-| Level | Name | Typical verbs |
+| Level | Category | Action verbs |
 |---|---|---|
-| L1 | Remember | define, list, state, recall, identify, name |
-| L2 | Understand | explain, describe, summarise, classify, interpret, illustrate |
-| L3 | Apply | apply, compute, solve, use, implement, demonstrate, calculate |
-| L4 | Analyse | analyse, compare, differentiate, examine, derive, test |
-| L5 | Evaluate | evaluate, justify, assess, choose, critique, validate |
-| L6 | Create | design, develop, formulate, construct, propose, devise |
+| L1 | Remember | Define, List, State, Identify, Recall |
+| L2 | Understand | Explain, Describe, Discuss, Summarise, Interpret |
+| L3 | Apply | Apply, Solve, Compute, Demonstrate, Implement |
+| L4 | Analyse | Analyse, Compare, Differentiate, Examine, Investigate |
+| L5 | Evaluate | Evaluate, Justify, Criticise, Assess, Validate |
+| L6 | Create | Design, Develop, Formulate, Construct, Propose |
+
+A CO starts with one of these verbs only. If `COURSE.md` gives the institution's own verb list, use that instead.
+The category names (Remember, Understand, ...) are level labels, not verbs.
 
 A question's Bloom level is the level of thinking it needs, not just its verb. "Compute" for a routine plug-in is
 L3; "compute" that needs choosing and adapting a method may be L4.

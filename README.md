@@ -167,8 +167,10 @@ The shared rules are in `plugins/teaching/shared/style-core.md`. The lecture rul
 Course outcomes follow the NBA Self Assessment Report (SAR), using the 11 POs of the revised SAR. The rules are in
 `plugins/teaching/shared/nba-obe.md`.
 
-- **Syllabus:** 4–6 COs, each with one measurable verb and a Bloom level, and the units each CO covers. The highest
-  level depends on the year of study: up to L3 in first year, L5 in 2nd–3rd year, and L6 in final year.
+- **Syllabus:** 4–6 COs and the units each CO covers. Each CO completes "the student should be able to …" with one
+  action verb from a fixed table, pointed at a real-world system or problem, with the mathematics after "using".
+  Levels depend on the year of study: mostly L1–L2 with a few L3 in first year, up to L5 in 2nd–3rd year, and L6 in
+  final year.
   Also the CO–PO/PSO articulation matrix (3/2/1/–) with its average row (no written justification
   section; doubtful cells are reported to the instructor instead).
 - **Plan:** the CO(s) of each lecture, with a check that every CO is taught.
