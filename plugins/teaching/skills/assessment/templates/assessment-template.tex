@@ -1,0 +1,51 @@
+% Assessment template for the /assessment skill. Used for both files:
+%   <name>.tex            the paper (questions only)
+%   <name>-solutions.tex  each question restated, then \begin{solution} ... \end{solution} with step marks
+% Replace every <...>. Copy macros and notation from the course's lecture files.
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.3cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,bm}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{colorlinks,linkcolor=blue!50!black,urlcolor=blue!50!black}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\qmarks}[1]{\hfill\mbox{[#1]}}                 % without NBA
+\newcommand{\qtag}[3]{\hfill\mbox{[#1 $\mid$ #2 $\mid$ #3]}}   % NBA: \qtag{marks}{CO}{Bloom level}
+% Solutions file only:
+% \newenvironment{solution}{\par\smallskip\noindent\textit{Solution.}\ }{\par\medskip}
+
+\title{\textbf{<Course code> <Course title>}\\[4pt]
+\large <Mid-semester examination>}   % solutions file: "<...>: Solutions and marking scheme"
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\vspace{-3em}
+
+\begin{center}
+Date: <to fill> \qquad Duration: <90 minutes> \qquad Maximum marks: <30>
+\end{center}
+
+\noindent\textbf{Instructions.} <Closed book. Non-programmable calculators are allowed.>
+Answer all questions. Show your working; marks are given for method as well as for the answer.
+% NBA: Marks, course outcome (CO) and Bloom level (L1--L6) are shown on the right of each question as [marks | CO | L].
+
+\medskip
+\begin{enumerate}[label=\textbf{Q\arabic*.},leftmargin=*]
+\item <question> \qtag{<6>}{<CO1>}{<L3>}
+  \begin{enumerate}[label=(\alph*)]
+  \item <part> \qtag{<2>}{<CO1>}{<L2>}
+  \item <part> \qtag{<4>}{<CO1>}{<L3>}
+  \end{enumerate}
+\end{enumerate}
+
+% Solutions file only, with NBA: the blueprint, computed with code.
+% \section*{Blueprint}
+% \begin{tabular}{@{}lrr@{}}\toprule CO & Marks & \% \\\midrule CO1 & <6> & <20> \\\bottomrule\end{tabular}\qquad
+% \begin{tabular}{@{}lrr@{}}\toprule Level & Marks & \% \\\midrule L3 & <4> & <13> \\\bottomrule\end{tabular}
+
+\end{document}

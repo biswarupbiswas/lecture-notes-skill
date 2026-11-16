@@ -1,21 +1,22 @@
-# /lecture — lecture notes skill for Claude Code
+# Teaching skills for Claude Code
 
-`/lecture <topic>` writes the notes for **one lecture** of any university course, in any subject. The notes are
-**short but complete** and read as if a teacher wrote them by hand.
+Five skills that build a university course, in any subject, as LaTeX files and PDFs:
 
-The output is `lectureN.tex` and `lectureN.pdf`, in one fixed, simple format:
-- motivation;
-- the core ideas, with short proofs and worked examples;
-- a summary;
-- homework, if your course uses it.
+| Skill | Writes |
+|---|---|
+| `/syllabus` | the syllabus (`Syllabus/syllabus.pdf`) and the course settings file `COURSE.md` |
+| `/course-plan` | the instructor's semester plan (`Plan/plan.md`): lectures week by week, tutorial blocks, assessments |
+| `/lecture <topic>` | one lecture's notes (`LectureN/lectureN.pdf`) |
+| `/tutorial N` | tutorial sheet N and its full solutions (`TutorialN/`) |
+| `/assessment <name>` | a quiz or exam paper and its solutions and marking scheme (`Assessments/<name>/`) |
 
-Parts that only some subjects need are added only when the topic calls for them. These are algorithms, cost counts and a companion script.
-
-Before it reports back, the skill checks the notes. Every number is computed, every page of the PDF is checked by eye, and nothing about future lectures is mentioned or guessed.
+All documents are **short but complete** and read as if a teacher wrote them by hand. They use a fixed, simple format.
+Every number in them is computed, and every page of every PDF is checked by eye. Tutorials and exams use **only what
+has actually been taught**.
 
 ## Install
 
-**Option 1 — install script (gives the command `/lecture`)**
+**Option 1 — install script (gives the commands `/syllabus`, `/lecture`, ...)**
 
 ```bash
 git clone https://github.com/biswarupbiswas/lecture-notes-skill.git
@@ -25,78 +26,160 @@ cd lecture-notes-skill
 ./install.sh --project ~/teaching/MA1234    # only for one course folder
 ```
 
-Remove it with `./install.sh --uninstall`.
+Remove them with `./install.sh --uninstall`.
 
 **Option 2 — as a Claude Code plugin**
 
 ```
 /plugin marketplace add biswarupbiswas/lecture-notes-skill
-/plugin install lecture@lecture-notes
+/plugin install teaching@lecture-notes
 ```
 
-Plugin skills are namespaced, so in that case the command may appear as `/lecture:lecture`.
+Plugin skills are namespaced, so in that case the commands appear as `/teaching:lecture`, `/teaching:tutorial` and
+so on.
 
 **Requirements:**
 - a LaTeX distribution with `latexmk`;
 - `poppler-utils` (`pdftoppm`, `pdftotext`) for the page checks;
 - Python 3 or Julia for checking numbers.
 
-## Use
+## How to build a course
 
-Open Claude Code in your course folder and type, for example:
+Make an empty folder for the course, open Claude Code in it, and follow these steps.
+
+**1. Syllabus and course settings, once per course.**
 
 ```
-/lecture Gaussian quadrature
-/lecture The Lagrangian of a double pendulum
-/lecture Newton's method for systems, keep it to 4 pages
+/syllabus ~/Downloads/MA2101-official-syllabus.pdf
 ```
 
-You always name the topic. The skill never picks or predicts it.
+If there is no official syllabus, describe the course instead:
 
-The skill reads the previous lectures in the folder so that it can:
-- keep the notation;
-- reuse the running examples;
-- refer back to earlier results;
-- follow any edits you made by hand.
+```
+/syllabus MA2101 Numerical Methods, 3-1-0, 4 credits, 14 weeks, 2nd-year B.Tech, prerequisites calculus and linear algebra
+```
 
-## Course settings: `COURSE.md`
+An official syllabus is used exactly as given. Without one, the skill drafts a syllabus for you to edit and approve.
+Either way, it writes the NBA course outcomes and CO–PO/PSO matrix, and asks for your department's PSOs. It also
+creates `COURSE.md`. Open it and check:
+- the instructor name;
+- the assessment scheme;
+- the number of tutorial sheets (default 5);
+- the Exclude list.
 
-Put a `COURSE.md` file in the course's root folder; the template is in `plugins/lecture/skills/lecture/templates/COURSE.template.md`. In it you can set:
+**2. Semester plan, once, then whenever you fall behind or move ahead.**
 
-- the course title, the instructor and the folder layout;
+```
+/course-plan
+/course-plan update
+```
+
+For 3-1-0 over 14 weeks this gives 42 lecture slots, with a few kept as buffer. It also splits the lectures into
+5 tutorial blocks and places the quizzes and exams. The plan is for you only. No student document is made from it.
+
+**3. Each lecture, during the semester.**
+
+```
+/lecture Newton's method for nonlinear equations
+```
+
+You always name the topic. The skill never picks it from the plan. It reads your earlier lectures to keep notation
+and running examples, and it adds the lecture to `COURSE-LOG.md`, the record of what was actually taught.
+
+**4. Each tutorial sheet, after its block of lectures.**
+
+```
+/tutorial 1
+/tutorial 2 lectures 9-16
+```
+
+Each sheet has about 10–12 problems, from warm-up to challenge, over about 3 tutorial sessions. The full solutions
+go in a separate file.
+
+**5. Each assessment.**
+
+```
+/assessment quiz1
+/assessment midsem 30 marks 90 minutes
+/assessment endsem
+```
+
+The marks add up exactly and the paper fits the time. A separate file gives the solutions with step marks.
+
+Edit anything by hand at any time. The skills keep your edits and follow your style from then on. If you correct
+something that should always apply, add it to **House rules** in `COURSE.md`.
+
+## A course folder
+
+```
+MA2101/
+  COURSE.md              settings, read by every skill
+  COURSE-LOG.md          what has been taught and issued (written by /lecture, /tutorial, /assessment)
+  Syllabus/syllabus.tex, .pdf
+  Plan/plan.md           instructor only
+  Lecture1/lecture1.tex, .pdf
+  ...
+  Tutorial1/tutorial1.tex, tutorial1-solutions.tex, PDFs
+  Assessments/midsem/midsem.tex, midsem-solutions.tex, PDFs
+```
+
+The template for `COURSE.md` is `plugins/teaching/shared/COURSE.template.md`. Besides what is shown in step 1, it can
+set:
 - the textbooks and the running examples;
-- whether the course has homework, and whether it has companion code (by default it has none);
-- an **Exclude** list of topics taught by someone else, which never appear in the notes;
-- optional co-teacher material;
-- **House rules**: corrections you want applied to every future lecture.
-
-Without a `COURSE.md`, the skill works these out from the existing lecture files and asks only what it can't.
+- homework and companion code for lectures;
+- the problems per tutorial sheet;
+- the Bloom spread of marks in assessments;
+- an **Exclude** list of topics taught by someone else;
+- **House rules**.
 
 ## Style, in short
 
-The full rules are in `plugins/lecture/skills/lecture/reference/style-guide.md`, and `examples/` shows a finished lecture.
+The shared rules are in `plugins/teaching/shared/style-core.md`. The lecture rules are in
+`plugins/teaching/skills/lecture/reference/style-guide.md`, and `examples/` shows a finished lecture.
 
-- Short but complete: every paragraph earns its place, typically 3–5 pages.
+- Short but complete: every paragraph earns its place. A lecture is typically 3–5 pages.
 - Plain prose written by a teacher, in a fixed simple format. No coloured boxes, instructor notes or starred sections.
 - Strict order: nothing is used before it is introduced.
-- Nothing about future lectures: no "next lecture", no roadmap, no "we will see later".
-- Short proofs; anything long is stated without proof.
-- Algorithms, if there are any, are complete.
-- Homework, if there is any, is pen and paper only.
+- Nothing about future lectures in student documents: no "next lecture", no roadmap.
+- Tutorials and exams ask only about what was taught, and never copy homework or earlier tutorial problems.
+- Nothing invented: unknown book details or rules are marked `<to confirm>`.
+
+## NBA accreditation (on by default)
+
+Course outcomes follow the NBA Self Assessment Report (SAR), using the 11 POs of the revised SAR. The rules are in
+`plugins/teaching/shared/nba-obe.md`.
+
+- **Syllabus:** 4–6 COs, each with one measurable verb and a Bloom level, and the units each CO covers. The highest
+  level depends on the year of study: up to L3 in first year, L5 in 2nd–3rd year, and L6 in final year.
+  Also the CO–PO/PSO articulation matrix (3/2/1/–) with its average row (no written justification
+  section; doubtful cells are reported to the instructor instead).
+- **Plan:** the CO(s) of each lecture, with a check that every CO is taught.
+- **Lecture notes:** no tags; the course log records each lecture's COs.
+- **Tutorials:** a (CO, Bloom level) tag on every problem.
+- **Assessments:** `[marks | CO | L]` on every question. The solutions end with a blueprint: marks and percentages
+  per CO and per Bloom level.
+
+PSOs are written by your department, so `/syllabus` asks for them and never invents them. Check the PO statements
+against your institution's SAR copy. To use a different PO list, or to switch NBA off, edit the Accreditation
+section of `COURSE.md`.
 
 ## Layout
 
 ```
 .claude-plugin/marketplace.json        plugin marketplace entry
-plugins/lecture/.claude-plugin/plugin.json
-plugins/lecture/skills/lecture/
+plugins/teaching/.claude-plugin/plugin.json
+plugins/teaching/shared/               rules shared by all skills (edit here)
+    style-core.md                      shared style, build-and-look, file rules
+    course-log.md                      format of COURSE-LOG.md
+    nba-obe.md                         NBA COs, 11 POs, CO–PO matrix, Bloom levels, tagging rules
+    COURSE.template.md                 per-course settings
+plugins/teaching/skills/<skill>/
     SKILL.md                           the workflow Claude follows
-    reference/style-guide.md           style rules and final checklist
-    templates/lecture-template.tex     LaTeX skeleton
-    templates/COURSE.template.md       per-course settings
-    examples/example-lecture.tex       a finished lecture (style reference)
-    examples/example-companion.jl      its companion script
-install.sh                             install / uninstall
+    templates/                         LaTeX (or Markdown) skeletons
+    shared/                            copy of plugins/teaching/shared (made by sync-shared.sh)
+plugins/teaching/skills/lecture/reference/style-guide.md, examples/
+install.sh                             install / uninstall all skills
+sync-shared.sh                         copy shared/ into every skill (--check to verify)
 ```
 
 ## License

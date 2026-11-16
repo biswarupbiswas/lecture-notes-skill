@@ -1,0 +1,43 @@
+% Tutorial template for the /tutorial skill. Used for both files:
+%   tutorialN.tex            the sheet (problems only)
+%   tutorialN-solutions.tex  each problem restated, followed by \begin{solution} ... \end{solution}
+% Replace every <...>. Copy macros and notation from the course's lecture files.
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.3cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,bm}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{colorlinks,linkcolor=blue!50!black,urlcolor=blue!50!black}
+
+\newcommand{\R}{\mathbb{R}}
+% CO and Bloom tag at the right of a problem (NBA): \ptag{CO2}{L3}
+\newcommand{\ptag}[2]{\hfill\mbox{\small(#1, #2)}}
+% Solutions file only:
+% \newenvironment{solution}{\par\smallskip\noindent\textit{Solution.}\ }{\par\medskip}
+
+\title{\textbf{<Course code> <Course title>}\\[4pt]
+\large Tutorial <N>}   % solutions file: "Tutorial <N>: Solutions"
+\author{Covers Lectures <a>--<b>}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{A. Warm-up}
+\begin{enumerate}[label=\arabic*.,series=problems]
+\item <problem> \ptag{<CO1>}{<L2>}   % without NBA: optional \hfill(Lecture <k>)
+\end{enumerate}
+
+\section*{B. Standard}
+\begin{enumerate}[resume*=problems]
+\item <problem> \ptag{<CO1>}{<L3>}
+\end{enumerate}
+
+\section*{C. Challenge}
+\begin{enumerate}[resume*=problems]
+\item <problem> \ptag{<CO1>}{<L4>}
+\end{enumerate}
+
+\end{document}

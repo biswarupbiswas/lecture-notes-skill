@@ -11,7 +11,12 @@ A student should be able to learn the topic from the notes alone, and nothing in
 
 Request: `$ARGUMENTS`. Extra wishes from the user always override the defaults below.
 
-Read `reference/style-guide.md` before writing. `examples/example-lecture.tex` shows the expected look.
+Before writing, read:
+- `shared/style-core.md`: rules shared by all teaching skills;
+- `reference/style-guide.md`: rules for lecture notes;
+- `shared/course-log.md`: the course log you update at the end.
+
+`examples/example-lecture.tex` shows the expected look.
 Its subject is only an illustration: copy its *format and tone*, never its content.
 
 ---
@@ -19,11 +24,10 @@ Its subject is only an illustration: copy its *format and tone*, never its conte
 ## Step 1 — Topic and context
 
 1. **The topic must come from the user.** If `$ARGUMENTS` names no topic, ask for it in one short question.
-   Never guess the topic from a syllabus, a plan or the previous lecture.
-2. **Course settings.** Look for `COURSE.md` in the current directory and its parents, and follow it.
+   Never guess the topic from a syllabus, the course plan (`Plan/plan.md`) or the previous lecture.
+2. **Course settings.** Find `COURSE.md` and follow it (`shared/style-core.md` §6).
    It may give the title, instructor, file layout, books, running examples, topics to exclude, companion code and house rules.
-   If it is missing, take what you can from existing lecture files.
-3. **Previous lectures.** Read the latest one or two lecture files fully. Keep:
+3. **Previous lectures.** Read `COURSE-LOG.md` and the latest one or two lecture files fully. Keep:
    - their notation, macros and running examples;
    - any edits the instructor made by hand, which show their taste. Never undo them.
 
@@ -49,7 +53,7 @@ Aim for the shortest notes that are still complete, typically **3–5 pages**. W
 
 ## Step 3 — Check every number and claim
 
-- **Never write a number or a worked step you have not computed.** Use Python, sympy, Julia or similar in a scratch directory.
+- **Never write a number or a worked step you have not computed** (`shared/style-core.md` §4).
 - Choose examples whose arithmetic students can follow by hand.
 - Work out each worked example step by step in exactly the form the notes will show it.
 - Check that every exercise is well posed and can be answered from the notes.
@@ -66,9 +70,8 @@ Follow `reference/style-guide.md`. The essentials:
 
 ## Step 5 — Build and look
 
-1. Build with `latexmk -pdf` in a scratch directory. You need 0 errors, 0 undefined references and 0 overfull boxes. Then copy the PDF next to the `.tex`.
-2. Render **every page** to PNG and **look at it**. Fix wide tables, stranded headings, cramped lists and split algorithms, then rebuild.
-3. Search the PDF text for forbidden content: "next lecture", "later", ★, "instructor", and the Exclude list.
+Follow `shared/style-core.md` §5: a clean build, every page rendered and inspected, and the PDF text searched for
+forbidden content.
 
 ## Step 6 — Companion code (only if asked for)
 
@@ -81,7 +84,14 @@ Write the code only when COURSE.md or the user asks for it, or the earlier lectu
 
 Any co-teacher material that COURSE.md asks for goes in separate files, never in the notes.
 
-## Step 7 — Report
+## Step 7 — Update the course log
+
+Add this lecture's entry to `COURSE-LOG.md`, in the format of `shared/course-log.md`. With NBA (the `COURSE.md`
+default), the entry includes the lecture's CO(s), taken from the syllabus mapping of its topic. The notes themselves
+carry **no** CO tags. Create the file if it is missing;
+if earlier lectures exist but are not logged, add their entries first.
+
+## Step 8 — Report
 
 Go through the checklist in `reference/style-guide.md`. Then reply **briefly** with:
 - the file paths;
@@ -91,5 +101,5 @@ Go through the checklist in `reference/style-guide.md`. Then reply **briefly** w
 
 Do not paste the notes into the chat and do not suggest what the next lecture should be.
 
-When the user asks for changes, edit the file, rebuild, and look at the affected pages again.
-If a correction is a general preference, apply it now and suggest adding it to the "House rules" in COURSE.md.
+When the user asks for changes, edit the file, rebuild, look at the affected pages again, and update the log entry
+if what was taught changed.

@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
-# Install the /lecture skill for Claude Code.
+# Install the teaching skills for Claude Code: /syllabus, /course-plan, /lecture, /tutorial, /assessment.
 #
-#   ./install.sh                 install for your user (works in every project)  -> ~/.claude/skills/lecture
-#   ./install.sh --project DIR   install only for one project                    -> DIR/.claude/skills/lecture
+#   ./install.sh                 install for your user (works in every project)  -> ~/.claude/skills/<skill>
+#   ./install.sh --project DIR   install only for one project                    -> DIR/.claude/skills/<skill>
 #   ./install.sh --uninstall [--project DIR]
 #
-# After installing, start Claude Code and type /lecture.
+# After installing, start Claude Code in a course folder and type /syllabus.
 set -euo pipefail
 
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-src="$here/plugins/lecture/skills/lecture"
+skills_src="$here/plugins/teaching/skills"
 target_root="$HOME/.claude"
 uninstall=0
 
@@ -22,27 +22,36 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-dest="$target_root/skills/lecture"
-
 if [[ $uninstall -eq 1 ]]; then
-  if [[ -d "$dest" ]]; then rm -r -- "$dest"; echo "Removed $dest"; else echo "Nothing to remove at $dest"; fi
+  for src in "$skills_src"/*/; do
+    dest="$target_root/skills/$(basename "$src")"
+    if [[ -d "$dest" ]]; then rm -r -- "$dest"; echo "Removed $dest"; fi
+  done
   exit 0
 fi
 
-[[ -f "$src/SKILL.md" ]] || { echo "SKILL.md not found in $src" >&2; exit 1; }
+# make sure every skill carries the current shared rules
+"$here/sync-shared.sh" >/dev/null
+
 mkdir -p "$target_root/skills"
-if [[ -d "$dest" ]]; then
-  # keep backups OUTSIDE skills/, otherwise Claude Code would load them as a second /lecture
-  mkdir -p "$target_root/skill-backups"
-  backup="$target_root/skill-backups/lecture.$(date +%Y%m%d%H%M%S)"
-  mv -- "$dest" "$backup"
-  echo "Existing install moved to $backup"
-fi
-cp -r -- "$src" "$dest"
-echo "Installed /lecture to $dest"
+stamp="$(date +%Y%m%d%H%M%S)"
+for src in "$skills_src"/*/; do
+  src="${src%/}"
+  name="$(basename "$src")"
+  [[ -f "$src/SKILL.md" ]] || { echo "skipping $name: no SKILL.md" >&2; continue; }
+  dest="$target_root/skills/$name"
+  if [[ -d "$dest" ]]; then
+    # keep backups OUTSIDE skills/, otherwise Claude Code would load them as a second copy of the skill
+    mkdir -p "$target_root/skill-backups"
+    mv -- "$dest" "$target_root/skill-backups/$name.$stamp"
+    echo "Existing $name moved to $target_root/skill-backups/$name.$stamp"
+  fi
+  cp -r -- "$src" "$dest"
+  echo "Installed /$name to $dest"
+done
 
 for tool in latexmk pdftoppm pdftotext; do
-  command -v "$tool" >/dev/null 2>&1 || echo "Note: '$tool' not found; /lecture uses it to build and check the PDF."
+  command -v "$tool" >/dev/null 2>&1 || echo "Note: '$tool' not found; the skills use it to build and check PDFs."
 done
 command -v julia >/dev/null 2>&1 || command -v python3 >/dev/null 2>&1 || \
-  echo "Note: neither julia nor python3 found; /lecture uses one of them to verify numbers."
+  echo "Note: neither julia nor python3 found; the skills use one of them to verify numbers."

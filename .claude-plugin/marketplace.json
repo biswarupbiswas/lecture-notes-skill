@@ -5,9 +5,9 @@
   },
   "plugins": [
     {
-      "name": "lecture",
-      "source": "./plugins/lecture",
-      "description": "/lecture <topic>: short but complete, human-like lecture notes (LaTeX + PDF) in a fixed format, for any subject."
+      "name": "teaching",
+      "source": "./plugins/teaching",
+      "description": "Skills to build a university course: /syllabus, /course-plan, /lecture, /tutorial and /assessment, as LaTeX + PDF with every number checked."
     }
   ]
 }
