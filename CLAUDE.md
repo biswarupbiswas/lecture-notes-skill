@@ -64,7 +64,10 @@ latexmk -pdf -outdir=<scratch> plugins/teaching/skills/lecture/examples/example-
 - **Lecture-only rules:** `/lecture` keeps them in `reference/style-guide.md`, plus a finished example in
   `examples/`. The other skills keep their specific rules in their `SKILL.md`.
 - **References between files:** files refer to each other by relative path and by Step or § number. When you rename
-  or renumber something, update the references, including `README.md`.
+  or renumber something, update the references.
+- **README:** keep it short and inviting for teachers: the three-command pitch, why it is useful, install, and
+  the command table. Detailed rules belong in the skill files, not in the README. When you add or rename a skill,
+  update the command table.
 
 Precedence, as the skills state it: the user's request, then `COURSE.md`, then the style rules.
 
