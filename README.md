@@ -18,7 +18,7 @@ Before it reports back, the skill checks the notes. Every number is computed, ev
 **Option 1 — install script (gives the command `/lecture`)**
 
 ```bash
-git clone <this-repo-url> lecture-notes-skill
+git clone https://github.com/biswarupbiswas/lecture-notes-skill.git
 cd lecture-notes-skill
 ./install.sh                    # for your user, in every project
 # or
@@ -30,7 +30,7 @@ Remove it with `./install.sh --uninstall`.
 **Option 2 — as a Claude Code plugin**
 
 ```
-/plugin marketplace add <this-repo-url or local path>
+/plugin marketplace add biswarupbiswas/lecture-notes-skill
 /plugin install lecture@lecture-notes
 ```
 
