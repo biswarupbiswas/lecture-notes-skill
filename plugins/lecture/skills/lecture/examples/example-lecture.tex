@@ -1,0 +1,291 @@
+% Example of the target STYLE for /lecture (subject is only an illustration: copy the style, not the content).
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.3cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,bm}
+\usepackage{booktabs}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{colorlinks,linkcolor=blue!50!black,urlcolor=blue!50!black}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{example}{Example}
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\norm}[1]{\left\lVert #1\right\rVert}
+\newcommand{\off}{\operatorname{off}}
+
+\title{\textbf{MA3113 Numerical Linear Algebra with CUDA}\\[4pt]
+\large Module 3, Lecture 3: The Jacobi Method for Symmetric Matrices}
+\author{Biswarup Biswas}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{From one eigenvalue to all of them}
+The power method and its variants (Lectures 1 and 2) give us one eigenvalue at a time. If we want
+\emph{all} the eigenvalues of a matrix, finding them one by one with deflation is slow, and the errors pile up.
+For a \textbf{symmetric} matrix there is a much better idea, due to Jacobi (1846).
+
+We start from a fact of linear algebra.
+
+\begin{theorem}[Spectral theorem]
+If $A\in\R^{n\times n}$ is symmetric, there is an orthogonal matrix $Q$ ($Q^TQ=I$) such that
+\[
+Q^TAQ=D=\operatorname{diag}(\lambda_1,\dots,\lambda_n).
+\]
+The columns of $Q$ are orthonormal eigenvectors of $A$.
+\end{theorem}
+
+So diagonalising $A$ by an orthogonal matrix gives everything at once: the eigenvalues on the diagonal
+of $D$ and the eigenvectors in $Q$. Jacobi's idea is to build $Q$ step by step, as a product of very simple
+orthogonal matrices (plane rotations), each of which removes one pair of off-diagonal entries.
+
+In other words, the method will replace $A$ by $P_1^TAP_1$, then by $P_2^TP_1^TAP_1P_2$, and so on, until the matrix
+is (almost) diagonal. Before we do this, we should make sure that such a step does not change the answer.
+So let $P$ be orthogonal and $B=P^TAP$. Then:
+\begin{itemize}[nosep]
+\item $B$ has the same eigenvalues as $A$: if $A\bm v=\lambda\bm v$, then $B(P^T\bm v)=P^TA\bm v=\lambda P^T\bm v$;
+\item the eigenvectors are easy to recover: if $B\bm w=\lambda\bm w$, then $\bm v=P\bm w$ is an eigenvector of $A$;
+\item $B$ is again symmetric: $B^T=P^TA^TP=P^TAP=B$, so we can repeat the step.
+\end{itemize}
+So we can apply as many of these steps as we like without losing anything. What remains is to choose $P$.
+
+%=====================================================================
+\section{The $2\times2$ case}
+Take
+\[
+A=\begin{pmatrix}a&b\\b&d\end{pmatrix},\qquad
+P=\begin{pmatrix}\cos\theta&-\sin\theta\\ \sin\theta&\cos\theta\end{pmatrix}.
+\]
+$P$ is a rotation through the angle $\theta$, and it is orthogonal. Multiplying out,
+the off-diagonal entry of $P^TAP$ is
+\[
+(P^TAP)_{12}=b\cos2\theta-\frac{a-d}{2}\sin2\theta .
+\]
+We want this to be zero, so we choose
+\[
+\boxed{\ \tan2\theta=\frac{2b}{a-d}\ },\qquad |\theta|\le\frac{\pi}{4},
+\]
+and if $a=d$ we take $\theta=\pi/4$. Then $P^TAP$ is diagonal: one rotation finds both eigenvalues of a
+$2\times2$ symmetric matrix, and the columns of $P$ are the eigenvectors.
+
+%=====================================================================
+\section{The $n\times n$ case: one rotation}
+For $n>2$ we pick one off-diagonal entry $a_{pq}$ ($p<q$) and rotate in the $(p,q)$ plane only.
+The rotation matrix $P=P(p,q,\theta)$ is the identity except for four entries:
+\[
+P_{pp}=P_{qq}=\cos\theta,\qquad P_{pq}=-\sin\theta,\qquad P_{qp}=\sin\theta .
+\]
+Write $c=\cos\theta$, $s=\sin\theta$ and $A'=P^TAP$. Only rows and columns $p$ and $q$ change:
+\begin{align*}
+a'_{pj}&=c\,a_{pj}+s\,a_{qj},\qquad a'_{qj}=-s\,a_{pj}+c\,a_{qj}\qquad(j\ne p,q),\\
+a'_{pp}&=c^2a_{pp}+2sc\,a_{pq}+s^2a_{qq},\qquad
+a'_{qq}=s^2a_{pp}-2sc\,a_{pq}+c^2a_{qq},\\
+a'_{pq}&=(c^2-s^2)\,a_{pq}-sc\,(a_{pp}-a_{qq}),
+\end{align*}
+and $a'_{jp}=a'_{pj}$, $a'_{jq}=a'_{qj}$ by symmetry. All other entries are unchanged.
+The last formula is the $2\times2$ case again, so the same angle,
+\[
+\tan2\theta=\frac{2a_{pq}}{a_{pp}-a_{qq}}\quad(\theta=\pi/4\ \text{if}\ a_{pp}=a_{qq}),
+\]
+makes $a'_{pq}=a'_{qp}=0$.
+
+\begin{example}\label{ex:nice}
+$A=\begin{pmatrix}1&\sqrt2&2\\ \sqrt2&3&\sqrt2\\ 2&\sqrt2&1\end{pmatrix}$.
+The largest off-diagonal entry is $a_{13}=2$, and $a_{11}=a_{33}$, so $\theta=\pi/4$, $c=s=1/\sqrt2$. The formulas give
+\[
+a'_{11}=\tfrac12+2+\tfrac12=3,\quad a'_{33}=\tfrac12-2+\tfrac12=-1,\quad
+a'_{12}=\tfrac{\sqrt2+\sqrt2}{\sqrt2}=2,\quad a'_{32}=\tfrac{-\sqrt2+\sqrt2}{\sqrt2}=0,
+\]
+so
+\[
+A_1=\begin{pmatrix}3&2&0\\2&3&0\\0&0&-1\end{pmatrix}.
+\]
+Now rotate on $a_{12}=2$; again $a_{11}=a_{22}$, so $\theta=\pi/4$:
+$a'_{11}=\tfrac32+2+\tfrac32=5$, $a'_{22}=\tfrac32-2+\tfrac32=1$, and $a'_{13}=a'_{23}=0$. Hence
+\[
+A_2=\operatorname{diag}(5,\ 1,\ -1),
+\]
+and these are the eigenvalues of $A$. The eigenvectors are the columns of $P_1P_2$:
+\[
+P_1P_2=\begin{pmatrix}\tfrac12&-\tfrac12&-\tfrac1{\sqrt2}\\[2pt] \tfrac1{\sqrt2}&\tfrac1{\sqrt2}&0\\[2pt] \tfrac12&-\tfrac12&\tfrac1{\sqrt2}\end{pmatrix}.
+\]
+(Check: $A\,(\tfrac12,\tfrac1{\sqrt2},\tfrac12)^T=5\,(\tfrac12,\tfrac1{\sqrt2},\tfrac12)^T$.)
+\end{example}
+
+This example was lucky: two rotations were enough. In general a later rotation destroys zeros made
+earlier, as the next example shows.
+
+\begin{example}\label{ex:tri}
+Take the matrix of Lectures 1 and 2, $A=\begin{pmatrix}2&1&0\\1&2&1\\0&1&2\end{pmatrix}$, with eigenvalues
+$2+\sqrt2\approx3.41421$, $2$, $2-\sqrt2\approx0.58579$. Rotate on $a_{12}=1$ ($a_{11}=a_{22}$, so $\theta=\pi/4$):
+\[
+a'_{11}=1+1+1=3,\quad a'_{22}=1-1+1=1,\quad a'_{13}=c\cdot0+s\cdot1=\tfrac1{\sqrt2},\quad a'_{23}=-s\cdot0+c\cdot1=\tfrac1{\sqrt2},
+\]
+\[
+A_1=\begin{pmatrix}3&0&0.70711\\0&1&0.70711\\0.70711&0.70711&2\end{pmatrix}.
+\]
+The entry $a_{12}$ is now zero, but $a_{13}$, which was zero, is not any more. Continuing, each time on the largest
+off-diagonal entry:
+\begin{center}
+\begin{tabular}{@{}cccc@{}}\toprule
+step & rotate on & diagonal of $A_k$ & sum of squares of off-diagonal entries\\ \midrule
+0 & -- & $2,\ 2,\ 2$ & $4$\\
+1 & $(1,2)$ & $3,\ 1,\ 2$ & $2$\\
+2 & $(2,3)$ & $3,\ 0.63397,\ 2.36603$ & $1$\\
+3 & $(1,3)$ & $3.38645,\ 0.63397,\ 1.97958$ & $0.211$\\
+4 & $(1,2)$ & $3.41401,\ 0.60641,\ 1.97958$ & $0.058$\\
+5 & $(2,3)$ & $3.41401,\ 0.58579,\ 2.00020$ & $5.7\times10^{-4}$\\
+6 & $(1,3)$ & $3.41421,\ 0.58579,\ 2.00000$ & $8.3\times10^{-6}$\\ \bottomrule
+\end{tabular}
+\end{center}
+The zeros keep coming back, but they come back \emph{smaller}, and the diagonal settles down to the eigenvalues.
+\end{example}
+
+%=====================================================================
+\section{Why it converges}
+Measure how far $A$ is from diagonal by
+\[
+\off(A)^2=\sum_{i\ne j}a_{ij}^2 \qquad\text{(sum of squares of the off-diagonal entries).}
+\]
+In Example~\ref{ex:tri} this went $4\to2\to1\to0.211\to\cdots$. Look at the first two steps: the drop was
+$2=2\cdot1^2$ and then $1=2\cdot(0.70711)^2$, i.e.\ exactly twice the square of the entry we removed. This is always true.
+
+\begin{lemma}\label{lem:off}
+If $A'=P^TAP$ is the Jacobi rotation that makes $a'_{pq}=0$, then
+\[
+\off(A')^2=\off(A)^2-2a_{pq}^2 .
+\]
+\end{lemma}
+\begin{proof}
+Let $\norm{A}_F^2=\sum_{i,j}a_{ij}^2$ (Frobenius norm). Since $\norm{A}_F^2=\operatorname{trace}(A^TA)$ and
+$\operatorname{trace}(P^TA^TAP)=\operatorname{trace}(A^TA)$, an orthogonal similarity does not change $\norm{A}_F$.
+The same argument applied to the $2\times2$ block in rows and columns $p,q$ gives
+\[
+a'^2_{pp}+a'^2_{qq}+2a'^2_{pq}=a_{pp}^2+a_{qq}^2+2a_{pq}^2 .
+\]
+Since $a'_{pq}=0$, the diagonal gains $a'^2_{pp}+a'^2_{qq}-a_{pp}^2-a_{qq}^2=2a_{pq}^2$, and the other diagonal entries do
+not change. The total $\norm{A'}_F^2$ is the same, so the off-diagonal part loses exactly $2a_{pq}^2$.
+\end{proof}
+
+So every rotation moves ``weight'' from the off-diagonal part to the diagonal. If we always pick the
+\textbf{largest} off-diagonal entry (the \emph{classical} Jacobi method), then, since there are $n(n-1)$ off-diagonal entries,
+\[
+a_{pq}^2\ \ge\ \frac{\off(A)^2}{n(n-1)} ,\qquad\text{so}\qquad
+\off(A_{k+1})^2\le\Big(1-\frac{2}{n(n-1)}\Big)\off(A_k)^2 .
+\]
+
+\begin{theorem}
+For the classical Jacobi method, $\off(A_k)\to0$, and the diagonal entries of $A_k$ converge to the eigenvalues of $A$.
+\end{theorem}
+\begin{proof}[Idea of proof]
+The inequality above gives $\off(A_k)^2\le\big(1-\frac{2}{n(n-1)}\big)^k\off(A)^2\to0$. Each $A_k$ has the same eigenvalues as $A$,
+and a symmetric matrix that is nearly diagonal has its eigenvalues close to its diagonal entries
+(in fact $|\lambda_i-a^{(k)}_{ii}|\le\off(A_k)$ after sorting both; we do not prove this).
+\end{proof}
+
+The bound $1-2/(n(n-1))$ is very pessimistic. In practice, once the off-diagonal entries are small, the convergence
+becomes \emph{quadratic}: the number of correct digits roughly doubles with each sweep (see the last rows of the table in
+Example~\ref{ex:tri}). We state this without proof.
+
+\paragraph{The eigenvectors.} After $k$ rotations, $A_k=Q_k^TAQ_k$ with $Q_k=P_1P_2\cdots P_k$. When $A_k$ is
+(nearly) diagonal, the columns of $Q_k$ are (nearly) eigenvectors of $A$. We keep $Q$ up to date as we go:
+start with $Q=I$ and after each rotation set $Q\gets QP$. Only columns $p$ and $q$ of $Q$ change.
+
+%=====================================================================
+\section{The cyclic Jacobi method}
+In the classical method, finding the largest off-diagonal entry means looking at about $n^2/2$ numbers,
+while the rotation itself only changes $2$ rows and $2$ columns. So the search costs more than the rotation.
+The usual fix is not to search at all, but to go through all the pairs in a fixed order,
+\[
+(1,2),(1,3),\dots,(1,n),\ (2,3),\dots,(2,n),\ \dots,\ (n-1,n).
+\]
+One pass through all $n(n-1)/2$ pairs is called a \textbf{sweep}. This \emph{cyclic Jacobi method} also converges
+(we do not prove it), and Lemma~\ref{lem:off} still holds for every rotation.
+
+\begin{algorithm}[h]
+\caption{Cyclic Jacobi method}\label{alg:jac}
+\begin{algorithmic}[1]
+\Require symmetric $A=(a_{ij})\in\R^{n\times n}$, tolerance $\varepsilon$
+\State $Q\gets I$ \Comment{$Q=(q_{ij})$ will hold the eigenvectors}
+\While{$\off(A)>\varepsilon\norm{A}_F$}
+  \For{$p=1,\dots,n-1$}
+    \For{$q=p+1,\dots,n$}
+      \If{$a_{pq}\ne0$}
+        \State $\theta\gets\frac12\arctan\dfrac{2a_{pq}}{a_{pp}-a_{qq}}$ \ (if $a_{pp}=a_{qq}$, $\theta\gets\pi/4$);\quad $c\gets\cos\theta$, $s\gets\sin\theta$
+        \State $\alpha\gets a_{pp}$, $\beta\gets a_{qq}$, $\gamma\gets a_{pq}$ \Comment{keep the old values}
+        \For{$j=1,\dots,n$, $j\ne p,q$} \Comment{rows and columns $p,q$}
+          \State $u\gets a_{pj}$, $v\gets a_{qj}$
+          \State $a_{pj}\gets c\,u+s\,v$, \ $a_{qj}\gets -s\,u+c\,v$
+          \State $a_{jp}\gets a_{pj}$, \ $a_{jq}\gets a_{qj}$ \Comment{symmetry}
+        \EndFor
+        \State $a_{pp}\gets c^2\alpha+2sc\,\gamma+s^2\beta$, \ $a_{qq}\gets s^2\alpha-2sc\,\gamma+c^2\beta$
+        \State $a_{pq}\gets0$, \ $a_{qp}\gets0$
+        \For{$i=1,\dots,n$} \Comment{$Q\gets QP$: columns $p,q$ of $Q$}
+          \State $u\gets q_{ip}$, $v\gets q_{iq}$
+          \State $q_{ip}\gets c\,u+s\,v$, \ $q_{iq}\gets -s\,u+c\,v$
+        \EndFor
+      \EndIf
+    \EndFor
+  \EndFor
+\EndWhile
+\State \Return eigenvalues $a_{11},\dots,a_{nn}$; eigenvectors = columns of $Q$
+\end{algorithmic}
+\end{algorithm}
+
+\noindent Lines 6--16 are exactly $A\gets P^TAP$ and $Q\gets QP$ for the rotation $P=P(p,q,\theta)$ of \S3, written out with the
+formulas of \S3, so that only rows and columns $p$ and $q$ are touched.
+
+\paragraph{How many sweeps?} For random symmetric matrices, reducing $\off(A)$ to the level of rounding errors took
+\begin{center}
+\begin{tabular}{@{}lcccc@{}}\toprule
+$n$ & 10 & 50 & 100 & 200\\ \midrule
+sweeps & 5 & 7 & 8 & 9\\ \bottomrule
+\end{tabular}
+\end{center}
+The number of sweeps grows very slowly with $n$; 5 to 10 is typical.
+
+\paragraph{Cost.} One rotation changes rows $p$ and $q$: for each $j$, the two new entries
+$c\,a_{pj}+s\,a_{qj}$ and $-s\,a_{pj}+c\,a_{qj}$ cost 4 multiplications and 2 additions, so about $6n$ flops. (The columns are
+the same numbers, by symmetry.) Updating $Q$ costs another $6n$. One sweep has $n(n-1)/2\approx n^2/2$ rotations, so
+\[
+\text{one sweep}\approx 3n^3\ \text{flops}\quad(6n^3\ \text{with eigenvectors}),
+\]
+and the whole method, with 5--10 sweeps, costs a modest multiple of $n^3$.
+
+%=====================================================================
+\section{Summary}
+\begin{itemize}
+\item Jacobi's method works for \textbf{symmetric} matrices and finds \textbf{all} eigenvalues and eigenvectors together.
+\item Each step is a rotation $A\gets P^TAP$ in the $(p,q)$ plane with $\tan2\theta=2a_{pq}/(a_{pp}-a_{qq})$, which makes $a_{pq}=0$.
+\item Zeros made earlier do not stay zero, but $\off(A)^2$ drops by exactly $2a_{pq}^2$ at each step, so the method converges.
+\item Classical Jacobi rotates on the largest entry; cyclic Jacobi goes through the pairs in order and avoids the search.
+\item One sweep costs about $3n^3$ flops, and 5--10 sweeps are usually enough. The eigenvectors are the columns of $Q=P_1P_2\cdots$.
+\end{itemize}
+
+%=====================================================================
+\section*{Homework 3}
+\begin{enumerate}
+\item $A=\begin{pmatrix}5&2\\2&2\end{pmatrix}$. Find $\theta$ with $\tan2\theta=2b/(a-d)$, then $\cos\theta$ and $\sin\theta$
+(no calculator needed: find $\cos2\theta$ first). Compute $P^TAP$ and hence the eigenvalues and eigenvectors of $A$.
+\item Verify the formulas for $a'_{pj}$, $a'_{pp}$ and $a'_{pq}$ by multiplying out $P^TAP$ for $n=3$, $(p,q)=(1,3)$.
+\item $A=\begin{pmatrix}2&1&1\\1&2&1\\1&1&2\end{pmatrix}$. Do the first Jacobi rotation by hand on $a_{12}$.
+Which entries become zero? Check Lemma~\ref{lem:off}.
+\item Show that $\norm{P^TAP}_F=\norm{A}_F$ for any orthogonal $P$.
+\item Using the bound $\off(A_{k+1})^2\le\big(1-\frac{2}{n(n-1)}\big)\off(A_k)^2$, how many rotations does the classical method
+need to reduce $\off(A)$ by a factor $10^{-8}$ when $n=10$? How many sweeps is that? Compare with the table in \S5.
+\item Count the flops of one sweep of Algorithm~\ref{alg:jac}, with and without the eigenvectors. For $n=1000$ and 8 sweeps,
+how many flops in total?
+\item In Example~\ref{ex:tri} the zero entry $a_{13}$ became nonzero after the first rotation. Explain this from the formula for $a'_{pj}$.
+Can a rotation on $(p,q)$ ever change an entry $a_{ij}$ with $i,j\notin\{p,q\}$?
+\end{enumerate}
+
+\end{document}

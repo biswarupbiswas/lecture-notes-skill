@@ -1,0 +1,52 @@
+% Lecture notes template for the /lecture skill (fixed format).
+% Replace every <...>. Keep only the sections this topic needs; copy macros from previous lectures.
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.3cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,bm}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{xcolor}
+% Only if the lecture has an algorithm:
+% \usepackage{algorithm}
+% \usepackage[noend]{algpseudocode}
+\usepackage{hyperref}
+\hypersetup{colorlinks,linkcolor=blue!50!black,urlcolor=blue!50!black}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\newcommand{\R}{\mathbb{R}}
+
+\title{\textbf{<Course code> <Course title>}\\[4pt]
+\large Lecture <N>: <Lecture title>}
+\author{<Instructor>}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{<Motivation>}
+% What students know, and the question this lecture answers. One or two paragraphs.
+
+\section{<Core section>}
+% Definitions, ideas, results with short proofs, worked examples, in strict order.
+% Add as many core sections as the topic needs, and no more.
+
+% \section{<The method>}   % only if the topic is a method: complete algorithm (+ cost if relevant)
+
+\section{Summary}
+\begin{itemize}
+\item
+\end{itemize}
+
+\section*{Homework <N>}   % only if the course uses homework
+\begin{enumerate}
+\item
+\end{enumerate}
+
+\end{document}

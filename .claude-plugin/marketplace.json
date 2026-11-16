@@ -1,0 +1,13 @@
+{
+  "name": "lecture-notes",
+  "owner": {
+    "name": "Biswarup Biswas"
+  },
+  "plugins": [
+    {
+      "name": "lecture",
+      "source": "./plugins/lecture",
+      "description": "/lecture <topic>: short but complete, human-like lecture notes (LaTeX + PDF) in a fixed format, for any subject."
+    }
+  ]
+}
