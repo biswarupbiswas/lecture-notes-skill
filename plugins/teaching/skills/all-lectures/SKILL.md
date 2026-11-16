@@ -17,13 +17,7 @@ Request: `$ARGUMENTS`. Before starting, read `shared/style-core.md`, `shared/cou
 
 ## Step 1 — Read the syllabus
 
-1. **Find it.** Look in this order:
-   - a path in `$ARGUMENTS`;
-   - the official syllabus file named in `COURSE.md`;
-   - a `Syllabus/` folder;
-   - a file in the course root whose name contains "syllabus" (PDF, DOCX, TeX, Markdown or text).
-
-   If none is found, ask for it in one short question.
+1. **Find it** as in `shared/style-core.md` §6.
 2. **Use it as given.** Never change, reword or add to the instructor's syllabus. Take from it:
    - the units, with their topics in order and their hours;
    - the L-T-P and weeks;

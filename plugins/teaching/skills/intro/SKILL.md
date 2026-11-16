@@ -16,8 +16,7 @@ Request: `$ARGUMENTS`. Before writing, read `shared/style-core.md` and, unless `
 
 ## Step 1 — Inputs
 
-1. **Syllabus.** Use `Syllabus/syllabus.tex`, or the official file named in `COURSE.md`. If there is neither, stop
-   and suggest `/syllabus` first.
+1. **Syllabus.** Find it as in `shared/style-core.md` §6. It may be one the instructor wrote themselves.
 2. **From `COURSE.md`:** the course, the audience and their programmes, the prerequisites, the course outcomes, the
    application areas to prefer, the Exclude list and the house rules.
 3. **Existing page.** If `Lectures/intro.tex` exists, never overwrite it without asking. If the user asks for

@@ -1,6 +1,6 @@
 # Teaching skills for Claude Code
 
-Six skills that build a university course, in any subject, as LaTeX files and PDFs:
+Seven skills that build a university course, in any subject, as LaTeX files and PDFs:
 
 | Skill | Writes |
 |---|---|

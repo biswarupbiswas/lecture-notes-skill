@@ -60,6 +60,15 @@ assessments and solutions. Each skill adds its own rules on top. Instructions fr
 
 - Look for `COURSE.md` in the current directory and its parents, and follow it. If it is missing, take what you can
   from existing course files, and ask only what you cannot find.
+- **Finding the syllabus.** The instructor may have written it themselves, in any format: PDF, DOCX, TeX, Markdown
+  or text. Look in this order:
+  1. a path in `$ARGUMENTS`;
+  2. the official syllabus file named in `COURSE.md`;
+  3. the `Syllabus/` folder;
+  4. a file in the course root whose name contains "syllabus".
+
+  If none is found, ask for it in one short question. Suggest `/syllabus` only if the instructor has no syllabus
+  at all. Never change, reword or add to a syllabus the instructor wrote.
 - Follow the course's file layout. The default is in `shared/COURSE.template.md`.
 - **Never overwrite** an existing document without asking.
 - Never undo edits the instructor made by hand; they show the instructor's taste.

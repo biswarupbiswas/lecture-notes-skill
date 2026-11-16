@@ -25,8 +25,7 @@ Request: `$ARGUMENTS`. Before writing, read `shared/style-core.md` and `shared/c
 
 ## Step 1 — Inputs
 
-1. **Syllabus.** Use `Syllabus/syllabus.tex`, or the official file named in `COURSE.md`.
-   If there is neither, stop and suggest `/syllabus` first.
+1. **Syllabus.** Find it as in `shared/style-core.md` §6. It may be one the instructor wrote themselves.
 2. **From `COURSE.md`:**
    - L-T-P and weeks (default 14);
    - semester dates, holidays and exam weeks, if given;
