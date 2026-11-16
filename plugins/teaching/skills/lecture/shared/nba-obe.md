@@ -35,6 +35,16 @@ assessments, in the form the NBA Self Assessment Report (SAR) expects.
   able to …", then ask what the object of the verb is. In a 1st-year course, rewrite it if the object is an
   application or a real-world system. From the 2nd year on, rewrite it if the object is a piece of mathematics.
 
+  For the 1st year:
+
+  | Not a CO | Why | A CO |
+  |---|---|---|
+  | Solve optimisation problems in engineering design, such as minimising the cost of a container, using derivatives and Lagrange multipliers. | an engineering application in a 1st-year course | Understand the extrema of functions of one and several variables, with and without constraints, through derivatives. (L2) |
+  | Explain how calculators approximate $\sin x$ and $e^x$, and how large the error is, using Taylor polynomials. | a real-world system as the object | Understand the convergence of sequences, infinite series and improper integrals through the standard tests. (L2) |
+  | State the definitions of limit, continuity and differentiability. | the level's own name fits | Remember the definitions of limit, continuity and differentiability and the main theorems of one-variable calculus. (L1) |
+  | Compute derivatives and Taylor polynomials. / Calculate areas and volumes. | two L3 COs; the 1st year allows at most one | keep one L3 CO, as below, and move the other topics to L2 |
+  | Apply integrals to compute areas, volumes and fluxes. | two verbs (apply, compute) | Apply definite, multiple, line and surface integrals and the theorems of Green, Gauss and Stokes to the computation of areas, volumes and fluxes. (L3) |
+
   For the 2nd year and above:
 
   | Not a CO | Why | A CO |
