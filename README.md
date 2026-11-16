@@ -3,7 +3,8 @@
 Lecture notes, tutorials and exams for any university course, as clean LaTeX and PDF, in a few commands.
 
 ```
-/syllabus Calculus     → syllabus with CO–PO articulation as per NBA SAR
+/syllabus Calculus, 1st year, highest level=3
+                       → syllabus with CO–PO articulation as per NBA SAR
 /lecture Norms         → one lecture, and its questions added to the tutorial sheet
 /tutorial 1            → Tutorial 1, with solutions
 /all-lectures          → all lecture notes, from that syllabus
@@ -13,7 +14,8 @@ Lecture notes, tutorials and exams for any university course, as clean LaTeX and
 
 - ✍️ **Reads like a teacher wrote it.** Notes are short, clear and complete, with no AI fluff.
 - ✅ **Every number is checked.** Each example and answer is computed, and every PDF page is inspected.
-- 🎯 **NBA-ready.** COs with Bloom levels, a CO–PO/PSO matrix, and CO tags on every question.
+- 🎯 **NBA-ready.** COs with Bloom levels pitched to the year of study, a CO–PO/PSO matrix, and CO tags on every
+  question. Cap the levels with `highest level=N`.
 - 📚 **Fair tests.** Tutorials and exams ask only about what you have taught.
 - 🧑‍🏫 **Your course, your style.** Use your own syllabus. Correct one lecture, and the rest follow.
 
@@ -32,7 +34,7 @@ Then open Claude Code in a course folder and start typing `/`.
 
 | Command | What you get |
 |---|---|
-| `/syllabus` | the syllabus with COs and the CO–PO matrix (or bring your own) |
+| `/syllabus [highest level=N]` | the syllabus with COs and the CO–PO matrix (or bring your own); no CO above level N |
 | `/course-plan` | a week-by-week teaching plan |
 | `/intro` | a first-day page: why this course matters |
 | `/lecture <topic>` | one lecture, plus 2–3 new questions (with solutions) on the current tutorial sheet |
