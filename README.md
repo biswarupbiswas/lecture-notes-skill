@@ -6,6 +6,7 @@ Six skills that build a university course, in any subject, as LaTeX files and PD
 |---|---|
 | `/syllabus` | the syllabus (`Syllabus/syllabus.pdf`) and the course settings file `COURSE.md` |
 | `/course-plan` | the instructor's semester plan (`Plan/plan.md`): lectures week by week, tutorial blocks, assessments |
+| `/intro` | a one- to two-page motivating page: why learn the course and where students will use it (`Lectures/intro.pdf`) |
 | `/lecture <topic>` | one lecture's notes (`Lectures/lectureN.pdf`) |
 | `/all-lectures` | every lecture of the course (or a unit, or a range) from your own syllabus, in order |
 | `/tutorial N` | tutorial sheet N and its full solutions (`Tutorials/`) |
@@ -78,6 +79,15 @@ creates `COURSE.md`. Open it and check:
 
 For 3-1-0 over 14 weeks this gives 42 lecture slots, with a few kept as buffer. It also splits the lectures into
 5 tutorial blocks and places the quizzes and exams. The plan is for you only. No student document is made from it.
+
+**Before the first lecture: a motivating page.**
+
+```
+/intro
+```
+
+One or two pages for the first day: why the course is worth learning and where students will use it, built from the
+syllabus and the course outcomes. Only genuine uses, no hype and no lecture-by-lecture roadmap.
 
 **3. The lectures: all at once, or one at a time.**
 

@@ -4,8 +4,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repository is
 
-This repository holds Claude Code **skills**, not a course. There are six: `/syllabus`, `/course-plan`, `/lecture`,
-`/all-lectures`, `/tutorial` and `/assessment`. Together they build a university course as LaTeX files and PDFs. There is no
+This repository holds Claude Code **skills**, not a course. There are seven: `/syllabus`, `/course-plan`, `/intro`,
+`/lecture`, `/all-lectures`, `/tutorial` and `/assessment`. Together they build a university course as LaTeX files and PDFs. There is no
 application code, build step or test suite. The "product" is the Markdown instructions and LaTeX templates under
 `plugins/teaching/`. It is distributed two ways: copied in by `install.sh`, or installed as the plugin `teaching`
 through `.claude-plugin/marketplace.json`.

@@ -28,7 +28,8 @@ assessments and solutions. Each skill adds its own rules on top. Instructions fr
 - **Use only what has been taught.** Student documents (notes, tutorials, assessments) use only material in
   `COURSE-LOG.md` and the course prerequisites. See `shared/course-log.md`.
 - **Nothing about the future in student documents:** no "next lecture", no "we will see later", no roadmap.
-  References *back* to earlier lectures are good.
+  References *back* to earlier lectures are good. The one exception is the `/intro` page, which may name the main
+  ideas of the course as the syllabus does, but gives no lecture-by-lecture roadmap.
 - **Never invent facts.** This covers book titles, editions, authors, dates and university rules. If you are not sure
   of one, leave a clear `<to confirm: ...>` and list it in your report.
 - Nothing from the `COURSE.md` **Exclude** list may appear.

@@ -7,7 +7,7 @@
     {
       "name": "teaching",
       "source": "./plugins/teaching",
-      "description": "Skills to build a university course: /syllabus, /course-plan, /lecture, /all-lectures, /tutorial and /assessment, as LaTeX + PDF with every number checked."
+      "description": "Skills to build a university course: /syllabus, /course-plan, /intro, /lecture, /all-lectures, /tutorial and /assessment, as LaTeX + PDF with every number checked."
     }
   ]
 }
