@@ -9,6 +9,7 @@ Every field is optional, so delete what you don't need.
 - Instructor (author line): <name>
 - Audience: <e.g. 2nd-year B.Tech, all branches>
 - Year of study: <1st | 2nd | 3rd | final> (sets the highest Bloom level of COs; see `shared/nba-obe.md` §1)
+- Highest CO level (optional): <e.g. L3> (overrides the year's default: no CO above it, and at most one CO at it)
 - Prerequisites: <e.g. calculus, linear algebra>
 - L-T-P and credits: <e.g. 3-1-0, 4 credits>
 - Weeks of teaching: <e.g. 14>

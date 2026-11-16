@@ -1,7 +1,7 @@
 {
   "name": "teaching",
   "description": "Build a university course with Claude Code: syllabus, semester plan, a motivating intro page, lecture notes, tutorial sheets and assessments (LaTeX + PDF). Short, human-like, every number verified, only what was taught. Course settings come from COURSE.md.",
-  "version": "2.12.0",
+  "version": "2.13.0",
   "author": {
     "name": "Biswarup Biswas"
   },

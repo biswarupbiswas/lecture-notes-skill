@@ -1,7 +1,7 @@
 ---
 name: syllabus
 description: Create a university course's syllabus as LaTeX and PDF and set up the course folder (COURSE.md). Uses the official syllabus exactly as given when there is one; otherwise drafts one from the course details for the instructor to approve. Use when the user starts a new course, asks for a syllabus or course outline, or types /syllabus.
-argument-hint: "[path to official syllabus | course title, L-T-P, audience, prerequisites, books]"
+argument-hint: "[path to official syllabus | course title, L-T-P, audience, prerequisites, books] [highest level=N]"
 ---
 
 # /syllabus: the course syllabus and course setup
@@ -28,6 +28,8 @@ made.
    - L-T-P and credits, e.g. 3-1-0;
    - weeks of teaching (default 14);
    - audience, year of study and prerequisites;
+   - the highest CO level, only if the instructor gives one. "highest level=3" (or "max level 3", "up to L3")
+     means no CO above L3 and at most one CO at L3 (`shared/nba-obe.md` §1). Do not ask for it;
    - in draft mode, the main topics or the textbook the instructor wants, if they have one;
    - the evaluation scheme, if the university fixes it;
    - for NBA:
@@ -73,6 +75,8 @@ Follow `shared/nba-obe.md` §1–§4:
     concepts and methods, not at applications. Do not add applications to the units for the COs;
   - **2nd year and above:** application-oriented. The verb points at a real-world system or problem, never at
     mathematics. Add to the units the applications the COs name;
+  - **a highest level from the instructor** (e.g. "highest level=3") replaces the year's levels: no CO above it,
+    at most one CO at it;
 - test each CO with the test in `shared/nba-obe.md` §1 before proposing it;
 - every unit serves at least one CO, and every CO is served by at least one unit. Show the CO(s) of each unit in
   the unit table;
@@ -96,7 +100,7 @@ With code:
 
 By reading:
 - every CO completes "the student should be able to …", has exactly one action verb, taken from `shared/nba-obe.md` §3,
-  and its Bloom level matches that verb and the year of study;
+  and its Bloom level matches that verb, the year of study and any highest level the instructor gave;
 - the object of every verb fits the year of study (`shared/nba-obe.md` §1): the course's own ideas in the 1st year,
   a real-world system or problem later. The units teach it;
 - no PO is mapped without a real activity behind it, and no PSO is invented;
@@ -113,7 +117,7 @@ examples. Use tables for units, hours and evaluation, and short plain lines for 
 
 - **No `COURSE.md` yet:** create it from `shared/COURSE.template.md`.
   - Fill in everything the syllabus fixes: course, L-T-P, weeks, prerequisites, textbooks, evaluation.
-  - Fill in the year of study and the Accreditation section: programme, PSOs, CO code format, and the approved COs with their levels.
+  - Fill in the year of study, the highest CO level if the instructor gave one, and the Accreditation section: programme, PSOs, CO code format, and the approved COs with their levels.
     The other skills read the COs from there.
   - Fill in the official syllabus path, if there is one.
   - Keep the defaults for the rest: layout, homework, 5 tutorial sheets, no companion code.

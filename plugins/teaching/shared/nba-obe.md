@@ -68,6 +68,13 @@ assessments, in the form the NBA Self Assessment Report (SAR) expects.
   | Final year, electives, projects | L2–L6 | include L4–L6 |
 
   `COURSE.md` may override this table for a course.
+- **Highest CO level set by the instructor:** if `COURSE.md` has `Highest CO level: Ln`, or the instructor writes
+  "highest level=n" in a request, then:
+  - no CO is above Ln;
+  - Ln is rare: at most one CO is at Ln, and only if the course really needs it. The others are below Ln;
+  - tutorial problems and assessment questions never go above Ln either (§6).
+
+  This replaces only the levels of the year's row above. The pattern of the COs still follows the year of study.
 - **Taught and assessable:** everything a CO names must be taught in the units, and every CO must be
   testable in the course's assessments.
 
