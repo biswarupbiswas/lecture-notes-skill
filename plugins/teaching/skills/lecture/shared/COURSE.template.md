@@ -54,6 +54,7 @@ Rules in `shared/nba-obe.md`.
 ## Content
 - Textbooks / reading: <author, title, edition, publisher>
 - Running examples to reuse: <e.g. f(x) = eˣ on [0, 1]; A = [4 1 0; 1 4 1; 0 1 4]>
+- Application areas to prefer, when a genuine link exists: <e.g. computer science, machine learning, circuits>
 
 ## Exclude
 Topics that must not appear in any document, e.g. because another instructor teaches them:

@@ -32,6 +32,12 @@ assessments and solutions. Each skill adds its own rules on top. Instructions fr
 - **Never invent facts.** This covers book titles, editions, authors, dates and university rules. If you are not sure
   of one, leave a clear `<to confirm: ...>` and list it in your report.
 - Nothing from the `COURSE.md` **Exclude** list may appear.
+- **Only genuine applications and examples.** Link a concept to an application only when the link is real and
+  students will meet it. Never force a contrived one just to have an application.
+  *Why:* a forced link reads as desperate and teaches nothing.
+- **Examples need only the prerequisites.** An example must not depend on knowledge outside the course and its
+  prerequisites, such as mechanics or circuit laws in a mathematics course. If an application needs such
+  knowledge, mention it in one plain sentence or leave it out.
 
 ## 4. Every number is computed
 

@@ -54,6 +54,14 @@ cover. Instructions from the user or from `COURSE.md` override this guide.
 - Follow each example with one sentence on what it shows.
 - Tables have few columns and 5 significant digits.
 
+### Where the concept is used
+
+- Wherever it is natural, say briefly where students will use the concept: one or two sentences, in the motivation
+  or after a result. This is about uses outside the course, not a preview of future lectures.
+- Only genuine uses. If there is no real use at this point, say nothing. Never force a contrived application.
+- Prefer the application areas `COURSE.md` names, when a genuine link to them exists.
+- The use must be understandable with the course prerequisites alone (`shared/style-core.md` §3).
+
 ## 7. Methods and algorithms (only when the topic is a method)
 
 - Pseudocode (`algorithm` + `algpseudocode`, `noend`) must be complete: every quantity is an input or is computed in

@@ -44,7 +44,7 @@ Use the **fixed format** of `templates/lecture-template.tex` and include only th
 | Part | Include |
 |---|---|
 | Title block, as in the template | always |
-| 1. Motivation: link to what students know, and the question this lecture answers | always |
+| 1. Motivation: link to what students know, the question this lecture answers, and where the concept is used if there is a genuine use | always |
 | Core sections: definitions, ideas, results with short proofs, worked examples, in a strict order | always |
 | Method / algorithm with its cost | only if the topic *is* a method or procedure |
 | Summary (3–6 bullets) | always |
