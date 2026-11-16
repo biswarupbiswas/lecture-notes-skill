@@ -53,7 +53,7 @@ Request: `$ARGUMENTS`. Before writing, read `shared/style-core.md` and `shared/c
   - Every question and sub-question carries marks, a CO and a Bloom level.
   - Every CO taught in the range is assessed. In a mid-sem or end-sem paper, no single CO carries more than about
     40% of the marks.
-  - The Bloom spread follows `COURSE.md`. The default is at most 40% of marks at L1–L2 and at least 40% at L3–L4.
+  - The Bloom spread follows `COURSE.md`, otherwise the default for the year of study in `shared/nba-obe.md` §6.
   - A question tagged with a CO tests that CO's verb and content.
 
 ## Step 3 — Solve and check everything

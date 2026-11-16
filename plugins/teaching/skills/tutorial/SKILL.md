@@ -56,8 +56,8 @@ Request: `$ARGUMENTS`. Before writing, read `shared/style-core.md` and `shared/c
   §6).
   - Every CO taught in the range gets at least one problem.
   - The levels match the parts, within the course's highest CO level (`shared/nba-obe.md` §1): A is L1–L2,
-    B is L2–L3, and C is at the top level. In a first-year course C is still L3: harder problems that combine
-    methods, not L4–L6.
+    B is L2–L3, and C is at the top level. In a first-year course the top level is usually L2, rarely L3:
+    C problems are longer or combine ideas, but stay at that level.
   - A problem's level is never above its CO's level.
 - Use the course's notation and running examples. Problems are pen and paper, with numbers that can be done by hand
   or with a basic calculator, unless `COURSE.md` says otherwise.

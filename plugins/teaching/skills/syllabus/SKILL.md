@@ -47,7 +47,7 @@ made.
   Step 2c. Put them in a separate section headed "Course outcomes and mapping (proposed)", and mark them for the
   instructor to approve.
 - If the official COs break the rules in `shared/nba-obe.md` §1, keep them as they are and list the problems in the
-  report. Examples: an unmeasurable verb such as "understand", or too many COs.
+  report. Examples: an unmeasurable verb such as "know" or "learn", or too many COs.
 
 ## Step 2b — Draft mode: write a draft for approval
 
@@ -66,11 +66,14 @@ made.
 
 Follow `shared/nba-obe.md` §1–§4:
 - 4–6 COs in the CO code format of `COURSE.md`, each built exactly as in `shared/nba-obe.md` §1: one sentence that
-  completes "At the end of the course, the student should be able to …", in the pattern
-  `<one action verb from §3> <a real-world system or problem> using <the mathematics>`, with a Bloom level.
-  The levels follow the year of study: mostly L1–L2 and a few L3 for a first-year course (`shared/nba-obe.md` §1);
-- the verb of every CO, at every level, points at a real-world system or problem, never at mathematics. Test each
-  CO with the table in `shared/nba-obe.md` §1 before proposing it. Add to the units the applications the COs name;
+  completes "At the end of the course, the student should be able to …", with one action verb from §3 (the level's
+  own name, such as Understand or Evaluate, wherever it reads naturally) and a Bloom level. The pattern and the
+  levels follow the year of study (`shared/nba-obe.md` §1):
+  - **1st year:** L1–L2, and L3 only in a rare case, for at most one CO. The verb points at the course's own
+    concepts and methods, not at applications. Do not add applications to the units for the COs;
+  - **2nd year and above:** application-oriented. The verb points at a real-world system or problem, never at
+    mathematics. Add to the units the applications the COs name;
+- test each CO with the test in `shared/nba-obe.md` §1 before proposing it;
 - every unit serves at least one CO, and every CO is served by at least one unit. Show the CO(s) of each unit in
   the unit table;
 - the articulation matrix:
@@ -94,7 +97,8 @@ With code:
 By reading:
 - every CO completes "the student should be able to …", has exactly one action verb, taken from `shared/nba-obe.md` §3,
   and its Bloom level matches that verb and the year of study;
-- the object of every verb is a real-world system or problem, not mathematics, and the units teach it;
+- the object of every verb fits the year of study (`shared/nba-obe.md` §1): the course's own ideas in the 1st year,
+  a real-world system or problem later. The units teach it;
 - no PO is mapped without a real activity behind it, and no PSO is invented;
 - every topic belongs to the course level;
 - nothing is invented.
