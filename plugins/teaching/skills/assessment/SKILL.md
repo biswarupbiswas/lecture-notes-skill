@@ -32,7 +32,7 @@ Request: `$ARGUMENTS`. Before writing, read `shared/style-core.md` and `shared/c
      lectures so far, and an end-sem covers the whole course.
    - Content comes only from the lecture notes and `COURSE-LOG.md`, never from the plan. State the range in one
      line before writing, and say if any lecture in it is still `prepared`.
-3. Read the log entries and the lecture files in the range, so that you know their notation, results, homework and
+3. Read the log entries and the lecture files in the range, so that you know their notation, results, problems and
    tutorial problems.
 
 ## Step 2 — Design the paper
@@ -46,7 +46,7 @@ Request: `$ARGUMENTS`. Before writing, read `shared/style-core.md` and `shared/c
 - **Levels:** a mix of direct application, standard problems, and one or two questions that need understanding:
   a short proof, a "what happens if…", or a choice of method with a reason.
 - **Fair:** only what the log shows was taught. Ask for proofs only of results that were **proved** in the lectures.
-- **No copies:** no question may be a homework or tutorial problem from the log. A new question of the same type is
+- **No copies:** no question may be a lecture problem or tutorial problem from the log. A new question of the same type is
   fine and expected.
 - Numbers must be manageable in the time with the allowed material.
 - **CO and Bloom tags (NBA, the default):** follow `shared/nba-obe.md` §6.

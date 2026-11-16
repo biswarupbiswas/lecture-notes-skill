@@ -262,17 +262,7 @@ the same numbers, by symmetry.) Updating $Q$ costs another $6n$. One sweep has $
 and the whole method, with 5--10 sweeps, costs a modest multiple of $n^3$.
 
 %=====================================================================
-\section{Summary}
-\begin{itemize}
-\item Jacobi's method works for \textbf{symmetric} matrices and finds \textbf{all} eigenvalues and eigenvectors together.
-\item Each step is a rotation $A\gets P^TAP$ in the $(p,q)$ plane with $\tan2\theta=2a_{pq}/(a_{pp}-a_{qq})$, which makes $a_{pq}=0$.
-\item Zeros made earlier do not stay zero, but $\off(A)^2$ drops by exactly $2a_{pq}^2$ at each step, so the method converges.
-\item Classical Jacobi rotates on the largest entry; cyclic Jacobi goes through the pairs in order and avoids the search.
-\item One sweep costs about $3n^3$ flops, and 5--10 sweeps are usually enough. The eigenvectors are the columns of $Q=P_1P_2\cdots$.
-\end{itemize}
-
-%=====================================================================
-\section*{Homework 3}
+\section{Problems}
 \begin{enumerate}
 \item $A=\begin{pmatrix}5&2\\2&2\end{pmatrix}$. Find $\theta$ with $\tan2\theta=2b/(a-d)$, then $\cos\theta$ and $\sin\theta$
 (no calculator needed: find $\cos2\theta$ first). Compute $P^TAP$ and hence the eigenvalues and eigenvectors of $A$.

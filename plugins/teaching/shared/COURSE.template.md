@@ -25,7 +25,7 @@ Every field is optional, so delete what you don't need.
 - Official syllabus file (if any): <path; it is used as given and never reworded>
 
 ## Lectures
-- Homework at the end of each lecture: <yes (default) | no>
+- Problems at the end of each lecture: <yes (default) | no> (there is never a summary section)
 - Companion code: <none (default) | Julia | Python | MATLAB ...>
 
 ## Tutorials

@@ -12,8 +12,9 @@ cover. Instructions from the user or from `COURSE.md` override this guide.
   1. motivation;
   2. core sections;
   3. method (optional);
-  4. summary;
-  5. homework (optional).
+  4. problems (unless `COURSE.md` turns them off).
+
+  There is **no summary section**.
 - Write one `.tex` file, ready for students, with no instructor/student switches.
 - Do not add "Key idea" panels, instructor notes, timing plans, or "do on the board" cues. Use at most one `\boxed{}`
   formula, for *the* key result.
@@ -71,16 +72,20 @@ cover. Instructions from the user or from `COURSE.md` override this guide.
 - If cost matters to the course, derive it in one line rather than just stating it.
 - Use mathematical names ("inner product"), never code names (`dot`, `axpy`).
 
-## 8. Summary and homework
+## 8. Problems (no summary)
 
-- **Summary:** 3–6 one-sentence bullet points, with no new material.
-- **Homework**, if the course uses it: 4–7 questions, pen and paper only (code belongs to the companion script). Mix:
-  - a short computation;
-  - verifying a step from the notes;
-  - a small proof;
-  - a "what happens if…" question.
-
-  Each question must be well posed and answerable from the notes.
+- The notes end with a section **Problems**. There is no summary section.
+  *Why:* a summary repeats the notes; problems make students use them.
+- Typically 3–6 problems, pen and paper only (code belongs to the companion script). Only as many as the topic
+  needs: no filler, no drill that repeats the same computation with other numbers.
+- Each problem has a clear purpose. A good set mixes:
+  - a short computation that practises the method;
+  - a small proof, or a step of a proof from the notes;
+  - a "what happens if…" question or a variant that tests understanding.
+- Make them look hand-made by a teacher: varied wording, numbers chosen so the work comes out by hand, parts (a),
+  (b) only when they build on each other. No generic templates such as "Compute the following".
+- Each problem must be well posed and answerable from the notes and earlier lectures. Solve every one in the scratch
+  directory; no solutions appear in the notes.
 
 ## 9. Final checklist
 

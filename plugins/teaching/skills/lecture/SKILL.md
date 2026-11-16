@@ -47,8 +47,8 @@ Use the **fixed format** of `templates/lecture-template.tex` and include only th
 | 1. Motivation: link to what students know, the question this lecture answers, and where the concept is used if there is a genuine use | always |
 | Core sections: definitions, ideas, results with short proofs, worked examples, in a strict order | always |
 | Method / algorithm with its cost | only if the topic *is* a method or procedure |
-| Summary (3–6 bullets) | always |
-| Homework / exercises | if the course uses them (default yes, 4–7 questions, pen and paper) |
+| Problems (typically 3–6, pen and paper, no filler; style guide §8) | always, unless COURSE.md turns them off |
+| Summary | never |
 | Companion code | only if COURSE.md asks for it or the earlier lectures have it |
 
 Check the **sequencing**: nothing may be used, or used as motivation, before it is introduced.

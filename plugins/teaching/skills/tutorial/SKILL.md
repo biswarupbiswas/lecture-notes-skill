@@ -30,7 +30,7 @@ Request: `$ARGUMENTS`. Before writing, read `shared/style-core.md` and `shared/c
    the lecture notes contain. Every lecture in the range must have notes and a log entry. If any is still
    `prepared`, say so in the one-line range message.
    If `COURSE-LOG.md` is missing, rebuild it from the lecture files first (`shared/course-log.md`).
-4. Read the lecture files in the range fully, so that you know their notation, examples and homework.
+4. Read the lecture files in the range fully, so that you know their notation, examples and problems.
 
 ## Step 2 — Design the sheet
 
@@ -44,7 +44,7 @@ Request: `$ARGUMENTS`. Before writing, read `shared/style-core.md` and `shared/c
 - **Coverage:** every lecture in the range has at least one problem. Weight lectures by how much they contain.
 - **Variety:** mix computation, derivation or small proof, interpretation, and one problem that connects two or
   more lectures.
-- **No repeats:** do not reuse a homework question or an earlier tutorial problem from the log. A new problem of
+- **No repeats:** do not reuse a lecture problem or an earlier tutorial problem from the log. A new problem of
   the same type is fine.
 - **CO and Bloom tags (NBA):** tag every problem with the CO it tests and its Bloom level (`shared/nba-obe.md` §3,
   §6).

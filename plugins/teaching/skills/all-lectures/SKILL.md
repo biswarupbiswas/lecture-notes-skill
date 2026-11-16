@@ -31,7 +31,7 @@ Request: `$ARGUMENTS`. Before starting, read `shared/style-core.md`, `shared/cou
    - the textbooks.
 3. **Course settings.**
    - If `COURSE.md` is missing, create it from `shared/COURSE.template.md` with what the syllabus gives. Ask in
-     **one** message for anything needed that the syllabus lacks, such as the instructor name, homework yes/no, and
+     **one** message for anything needed that the syllabus lacks, such as the instructor name, lecture problems yes/no, and
      year of study.
    - If the course uses NBA and the syllabus has COs, copy them into `COURSE.md` exactly as written.
    - If the syllabus has no COs, do not invent them. Say so; the lectures are then logged without COs.
@@ -60,7 +60,7 @@ Request: `$ARGUMENTS`. Before starting, read `shared/style-core.md`, `shared/cou
 ## Step 3 — A pilot lecture first
 
 - Write the **first** lecture of the range alone, as in Step 4.
-- Then stop and ask the instructor to look at it: length, depth, notation, examples, homework.
+- Then stop and ask the instructor to look at it: length, depth, notation, examples, problems.
 - Their corrections become house rules for the whole batch. Add them to "House rules" in `COURSE.md` with their
   agreement, so every later lecture follows them.
 - Skip the pilot only if the instructor says so, or if earlier lectures in the course already show the style.

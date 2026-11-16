@@ -144,7 +144,7 @@ MA2101/
 The template for `COURSE.md` is `plugins/teaching/shared/COURSE.template.md`. Besides what is shown in step 1, it can
 set:
 - the textbooks and the running examples;
-- homework and companion code for lectures;
+- problems at the end of each lecture (there is no summary section) and companion code;
 - the problems per tutorial sheet;
 - the Bloom spread of marks in assessments;
 - an **Exclude** list of topics taught by someone else;
@@ -159,7 +159,7 @@ The shared rules are in `plugins/teaching/shared/style-core.md`. The lecture rul
 - Plain prose written by a teacher, in a fixed simple format. No coloured boxes, instructor notes or starred sections.
 - Strict order: nothing is used before it is introduced.
 - Nothing about future lectures in student documents: no "next lecture", no roadmap.
-- Tutorials and exams ask only about what was taught, and never copy homework or earlier tutorial problems.
+- Tutorials and exams ask only about what was taught, and never copy lecture problems or earlier tutorial problems.
 - Nothing invented: unknown book details or rules are marked `<to confirm>`.
 
 ## NBA accreditation (on by default)

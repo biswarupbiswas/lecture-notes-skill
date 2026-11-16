@@ -39,7 +39,7 @@ Keep entries short and factual. Use the names and notation that the documents us
 - Methods: computing nodes from the three-term recurrence
 - Notation: w(x), x_i, w_i, P_n
 - Examples: ∫₀¹ eˣ dx with n = 2 and n = 3
-- Homework: 5 questions (computation; verify exactness for x³; proof for n = 1; ...)
+- Problems: 5 (computation; verify exactness for x³; proof for n = 1; ...)
 - COs: CO3
 
 ## Tutorial 2 — Lectures 7–12   (Tutorials/tutorial2.tex)
