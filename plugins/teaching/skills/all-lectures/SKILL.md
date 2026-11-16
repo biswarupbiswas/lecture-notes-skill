@@ -79,7 +79,9 @@ For each lecture in order:
 3. **After each lecture**, check that:
    - the `.tex` and `.pdf` exist;
    - the build was clean;
-   - the `COURSE-LOG.md` entry was added, with `Status: prepared`.
+   - the `COURSE-LOG.md` entry was added, with `Status: prepared`;
+   - the lecture's problems were added to the current tutorial sheet, and the sheet was closed and logged if this
+     lecture ends its block (`/lecture` Step 8).
 4. **Stop at the first problem** and report it, keeping the lectures already done. Examples: a failed build, a
    number that cannot be verified, or a topic that needs a decision. Do not skip ahead.
    Running `/all-lectures` again continues from where it stopped, because finished lectures are kept.

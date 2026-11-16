@@ -96,11 +96,35 @@ default), the entry includes the lecture's CO(s), taken from the syllabus mappin
 carry **no** CO tags. Create the file if it is missing;
 if earlier lectures exist but are not logged, add their entries first.
 
-## Step 8 — Report
+## Step 8 — Add to the current tutorial sheet
+
+Unless `COURSE.md` says tutorials are built all at once, every prepared lecture adds its problems to the tutorial
+sheet straight away. Tutorial sheets grow lecture by lecture.
+
+1. **Find the current sheet.** It is the sheet whose lecture block in `Plan/plan.md` contains this lecture. Without
+   a plan, it is the open sheet: the highest-numbered `Tutorials/tutorialK.tex` that is not yet logged in
+   `COURSE-LOG.md`, or a new sheet if all existing ones are logged.
+2. **Open or extend it.** If `Tutorials/tutorialK.tex` does not exist, create it and `tutorialK-solutions.tex` from
+   the tutorial skill's template, with this lecture as the first one covered. Otherwise add to both files.
+3. **Write 2–3 new tutorial problems for this lecture**, following the tutorial skill's design rules (Step 2 of
+   `/tutorial`): A/B/C levels, with CO and Bloom tags under NBA. They are different from the lecture's own Problems
+   section and from every earlier tutorial problem. Solve each one with code in the scratch directory, and add its
+   full solution to the solutions file.
+4. **Keep the sheet in order.** Put each new problem in its A, B or C group, renumber, and update the "Lectures
+   covered" line. Rebuild both PDFs and check them as in `shared/style-core.md` §5.
+5. **Close the sheet at the block end.** If this lecture is the last one of the sheet's block in the plan, the sheet
+   is over:
+   - finish it as `/tutorial` would: check the size, the A/B/C balance, coverage of every lecture and CO, and the
+     CO/Bloom table in the solutions file; add a problem connecting two lectures if the sheet has none;
+   - add the tutorial entry to `COURSE-LOG.md` (`shared/course-log.md`).
+   The next lecture then opens the next sheet.
+
+## Step 9 — Report
 
 Go through the checklist in `reference/style-guide.md`. Then reply **briefly** with:
 - the file paths;
 - a 4–6 line outline;
+- the tutorial sheet updated, the problems added to it, and whether the sheet is now closed;
 - any choice the instructor may want to change;
 - anything you could not verify.
 

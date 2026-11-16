@@ -32,6 +32,8 @@ Every field is optional, so delete what you don't need.
 - Number of sheets: <5 (default)>
 - Problems per sheet: <10–12 (default)>
 - Solutions: <separate file (default) | none>
+- Built: <as lectures are prepared (default): each lecture adds 2–3 problems to the open sheet, which closes at the
+  end of its plan block | all at once with /tutorial>
 
 ## Assessments
 - Components, marks and weights: <e.g. Quiz 1 and Quiz 2: 10 marks, 30 min each, 10% each;

@@ -16,7 +16,7 @@ their range is still `prepared`.
 | Skill | Adds |
 |---|---|
 | `/lecture` (also when run by `/all-lectures`) | one entry per lecture, after the PDF is built |
-| `/tutorial` | one entry per sheet |
+| `/lecture` at the end of a sheet's block, or `/tutorial` | one entry per sheet, when the sheet is closed |
 | `/assessment` | one entry per paper |
 
 `/syllabus` and `/course-plan` never write to it. The plan is not the log.

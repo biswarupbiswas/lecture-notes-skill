@@ -104,7 +104,11 @@ For a single lecture, name the topic:
 Both keep your notation and running examples, and add each lecture to `COURSE-LOG.md`, the record of what was
 written and taught.
 
-**4. Each tutorial sheet, after its block of lectures.**
+**4. Tutorial sheets grow with the lectures.**
+
+Each `/lecture` adds 2–3 new problems for its lecture, with full solutions, to the open tutorial sheet. After the
+last lecture of a sheet's block in the plan, the sheet is checked, logged and closed, and the next lecture opens
+the next sheet. Use `/tutorial` to write a whole sheet at once, or to finish or repair one:
 
 ```
 /tutorial 1

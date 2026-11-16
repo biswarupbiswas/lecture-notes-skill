@@ -8,6 +8,12 @@ argument-hint: "<sheet number> [lectures a–b] [extra instructions]"
 
 Writes `Tutorials/tutorialN.tex` (students) and `Tutorials/tutorialN-solutions.tex` (instructor and TAs), with PDFs.
 
+**How sheets are normally made.** By default a sheet grows while the lectures are written: each `/lecture` adds 2–3
+problems for its lecture to the open sheet, and closes the sheet after the last lecture of its block in the plan
+(`/lecture` Step 8). Use `/tutorial` to write a whole sheet at once (when `COURSE.md` says tutorials are built all at
+once), or to finish, repair or extend a sheet that already exists. **If the sheet exists, complete it, keep its
+problems, and never rewrite it from scratch** without asking.
+
 Request: `$ARGUMENTS`. Before writing, read `shared/style-core.md` and `shared/course-log.md`, and, unless
 `COURSE.md` says `NBA: no`, `shared/nba-obe.md`.
 
