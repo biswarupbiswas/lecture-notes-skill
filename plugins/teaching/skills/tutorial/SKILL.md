@@ -20,13 +20,15 @@ Request: `$ARGUMENTS`. Before writing, read `shared/style-core.md` and `shared/c
    - The total number of sheets is in `COURSE.md` (default **5**).
 2. **Lecture range.**
    - If the user gives one, use it.
-   - Otherwise cover the lectures after the previous sheet's last lecture, up to the latest lecture in
-     `COURSE-LOG.md`.
+   - Otherwise, if `Plan/plan.md` exists, use the plan's lecture block for sheet N.
+   - Otherwise cover the lectures after the previous sheet's last lecture, up to the latest **delivered** lecture
+     in `COURSE-LOG.md`.
    - Tell the user the range in one line before writing. Ask only if the range is empty or looks wrong, for
      example 2 lectures, or 20.
 3. **Content source.** Use only `COURSE-LOG.md` and the lecture files in that range, plus earlier lectures and
-   prerequisites as background. **Never use the course plan** to decide content: a tutorial covers what was
-   taught, not what was planned.
+   prerequisites as background. The plan may give the default *range*, never the *content*: a tutorial covers what
+   the lecture notes contain. Every lecture in the range must have notes and a log entry. If any is still
+   `prepared`, say so in the one-line range message.
    If `COURSE-LOG.md` is missing, rebuild it from the lecture files first (`shared/course-log.md`).
 4. Read the lecture files in the range fully, so that you know their notation, examples and homework.
 

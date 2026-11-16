@@ -1,13 +1,21 @@
 # The course log: `COURSE-LOG.md`
 
-`COURSE-LOG.md` sits in the course root, next to `COURSE.md`. It records what has actually been **taught and
-issued**. It does not record what is planned. Tutorials and assessments take their content only from it.
+`COURSE-LOG.md` sits in the course root, next to `COURSE.md`. It records the lectures that have been **written**,
+with their status, and the tutorials and assessments that have been issued. It does not record what is only planned.
+
+- `Status: delivered` means the lecture has been taught.
+- `Status: prepared` means the notes are written but the lecture is not yet taught. This is what `/all-lectures`
+  writes.
+
+The instructor marks lectures delivered by editing the log, or by telling Claude, e.g. "lectures 1–8 were
+delivered". Tutorials and assessments take their content only from logged lectures, and say so when a lecture in
+their range is still `prepared`.
 
 ## Who writes it
 
 | Skill | Adds |
 |---|---|
-| `/lecture` | one entry per lecture, after the PDF is built |
+| `/lecture` (also when run by `/all-lectures`) | one entry per lecture, after the PDF is built |
 | `/tutorial` | one entry per sheet |
 | `/assessment` | one entry per paper |
 
@@ -25,6 +33,7 @@ Keep entries short and factual. Use the names and notation that the documents us
 
 ```markdown
 ## Lecture 7 — Gaussian quadrature   (Lecture7/lecture7.tex)
+- Status: delivered
 - Defined: orthogonal polynomials for a weight w(x); Gauss nodes x_i and weights w_i
 - Results: the n-point rule is exact for degree 2n−1 (proved); error formula (stated without proof)
 - Methods: computing nodes from the three-term recurrence

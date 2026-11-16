@@ -25,6 +25,9 @@ Its subject is only an illustration: copy its *format and tone*, never its conte
 
 1. **The topic must come from the user.** If `$ARGUMENTS` names no topic, ask for it in one short question.
    Never guess the topic from a syllabus, the course plan (`Plan/plan.md`) or the previous lecture.
+   **Batch mode:** when `/all-lectures` calls this skill with `batch mode: topic approved by the instructor`, the
+   topic, lecture number and CO(s) are given and approved. Do not stop to ask questions. Make sensible choices, follow the house
+   rules, and list your choices in the report. Stop only for a real blocker.
 2. **Course settings.** Find `COURSE.md` and follow it (`shared/style-core.md` §6).
    It may give the title, instructor, file layout, books, running examples, topics to exclude, companion code and house rules.
 3. **Previous lectures.** Read `COURSE-LOG.md` and the latest one or two lecture files fully. Keep:
@@ -86,7 +89,8 @@ Any co-teacher material that COURSE.md asks for goes in separate files, never in
 
 ## Step 7 — Update the course log
 
-Add this lecture's entry to `COURSE-LOG.md`, in the format of `shared/course-log.md`. With NBA (the `COURSE.md`
+Add this lecture's entry to `COURSE-LOG.md`, in the format of `shared/course-log.md`. Its status is `prepared` in
+batch mode, or if the user says the lecture is not yet taught; otherwise it is `delivered`. With NBA (the `COURSE.md`
 default), the entry includes the lecture's CO(s), taken from the syllabus mapping of its topic. The notes themselves
 carry **no** CO tags. Create the file if it is missing;
 if earlier lectures exist but are not logged, add their entries first.

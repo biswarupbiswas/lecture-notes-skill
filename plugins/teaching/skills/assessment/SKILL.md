@@ -27,9 +27,11 @@ Request: `$ARGUMENTS`. Before writing, read `shared/style-core.md` and `shared/c
    Ask in **one** message for anything still missing. Never guess marks or duration.
 2. **Lecture range.**
    - If the user gives one, use it.
-   - Otherwise: a quiz covers the lectures since the previous assessment, a mid-sem covers all lectures so far, and
-     an end-sem covers the whole course.
-   - Take the lectures from `COURSE-LOG.md`, never from the plan. State the range in one line before writing.
+   - Otherwise, if `Plan/plan.md` exists, use the plan's range for this assessment.
+   - Otherwise: a quiz covers the delivered lectures since the previous assessment, a mid-sem covers all delivered
+     lectures so far, and an end-sem covers the whole course.
+   - Content comes only from the lecture notes and `COURSE-LOG.md`, never from the plan. State the range in one
+     line before writing, and say if any lecture in it is still `prepared`.
 3. Read the log entries and the lecture files in the range, so that you know their notation, results, homework and
    tutorial problems.
 

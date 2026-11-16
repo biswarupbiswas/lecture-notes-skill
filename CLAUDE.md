@@ -4,8 +4,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repository is
 
-This repository holds Claude Code **skills**, not a course. There are five: `/syllabus`, `/course-plan`, `/lecture`,
-`/tutorial` and `/assessment`. Together they build a university course as LaTeX files and PDFs. There is no
+This repository holds Claude Code **skills**, not a course. There are six: `/syllabus`, `/course-plan`, `/lecture`,
+`/all-lectures`, `/tutorial` and `/assessment`. Together they build a university course as LaTeX files and PDFs. There is no
 application code, build step or test suite. The "product" is the Markdown instructions and LaTeX templates under
 `plugins/teaching/`. It is distributed two ways: copied in by `install.sh`, or installed as the plugin `teaching`
 through `.claude-plugin/marketplace.json`.
@@ -44,10 +44,16 @@ latexmk -pdf -outdir=<scratch> plugins/teaching/skills/lecture/examples/example-
 - **Data flow in a user's course folder:**
   - `/syllabus` writes `COURSE.md`, which every skill reads.
   - `/lecture`, `/tutorial` and `/assessment` append to `COURSE-LOG.md`.
-  - `/tutorial` and `/assessment` take content **only** from the log, never from `Plan/plan.md`.
+  - `/tutorial` and `/assessment` take content **only** from the lecture notes and the log. `Plan/plan.md` may
+    give their default lecture range, never their content.
   - `/course-plan` writes the plan, and its `update` mode reads the log.
 - **Deliberate rules the user chose; keep them:**
   - `/lecture` always needs the user to name the topic and never reads the plan;
+  - `/all-lectures` writes every lecture from the **instructor's own syllabus**. It does not need `/syllabus` or
+    `/course-plan`. It splits the syllabus into a topic list that the instructor approves, which counts as naming
+    the topics. It writes a pilot lecture first, then runs `/lecture` in batch mode, one subagent per lecture,
+    strictly in order, never overwriting existing lectures. Those lectures are logged `Status: prepared` until the
+    instructor marks them `delivered`;
   - the plan is instructor-only;
   - the default is 5 tutorial sheets per course (3-1-0 L-T-P, about 14 weeks);
   - an official syllabus is transcribed without rewording, and a drafted one needs approval.

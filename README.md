@@ -1,12 +1,13 @@
 # Teaching skills for Claude Code
 
-Five skills that build a university course, in any subject, as LaTeX files and PDFs:
+Six skills that build a university course, in any subject, as LaTeX files and PDFs:
 
 | Skill | Writes |
 |---|---|
 | `/syllabus` | the syllabus (`Syllabus/syllabus.pdf`) and the course settings file `COURSE.md` |
 | `/course-plan` | the instructor's semester plan (`Plan/plan.md`): lectures week by week, tutorial blocks, assessments |
 | `/lecture <topic>` | one lecture's notes (`LectureN/lectureN.pdf`) |
+| `/all-lectures` | every lecture of the course (or a unit, or a range) from your own syllabus, in order |
 | `/tutorial N` | tutorial sheet N and its full solutions (`TutorialN/`) |
 | `/assessment <name>` | a quiz or exam paper and its solutions and marking scheme (`Assessments/<name>/`) |
 
@@ -45,7 +46,8 @@ so on.
 
 ## How to build a course
 
-Make an empty folder for the course, open Claude Code in it, and follow these steps.
+Make an empty folder for the course, open Claude Code in it, and follow these steps. If you write the syllabus
+yourself, put it in the folder and go straight to step 3: `/all-lectures` reads it directly.
 
 **1. Syllabus and course settings, once per course.**
 
@@ -77,14 +79,30 @@ creates `COURSE.md`. Open it and check:
 For 3-1-0 over 14 weeks this gives 42 lecture slots, with a few kept as buffer. It also splits the lectures into
 5 tutorial blocks and places the quizzes and exams. The plan is for you only. No student document is made from it.
 
-**3. Each lecture, during the semester.**
+**3. The lectures: all at once, or one at a time.**
+
+To write every lecture from your own syllabus:
+
+```
+/all-lectures ~/teaching/MA2101/my-syllabus.pdf
+/all-lectures unit 2
+/all-lectures lectures 10-15
+```
+
+The skill splits your syllabus into lecture topics and shows you the list to approve. It never changes the syllabus
+itself. Then it writes Lecture 1 and waits for your comments; those become house rules for the rest. After that it
+writes the lectures one after another, each building on the ones before. It stops at the first problem, and running
+it again continues where it stopped. These lectures are logged as `prepared`. Tell Claude "lectures 1–8 were
+delivered" as you teach them.
+
+For a single lecture, name the topic:
 
 ```
 /lecture Newton's method for nonlinear equations
 ```
 
-You always name the topic. The skill never picks it from the plan. It reads your earlier lectures to keep notation
-and running examples, and it adds the lecture to `COURSE-LOG.md`, the record of what was actually taught.
+Both keep your notation and running examples, and add each lecture to `COURSE-LOG.md`, the record of what was
+written and taught.
 
 **4. Each tutorial sheet, after its block of lectures.**
 

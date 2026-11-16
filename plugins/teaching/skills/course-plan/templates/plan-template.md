@@ -1,7 +1,8 @@
 # <Course code> <Course title> — semester plan
 
-> Instructor's working plan, not for students. `/lecture` does not read this file. Tutorials and assessments use
-> `COURSE-LOG.md`, which records what was actually taught.
+> Instructor's working plan, not for students. `/all-lectures` may create the Lectures table from the syllabus, and
+> writes lectures from it only after the instructor approves it. Tutorials and assessments take their default ranges from here, and their content from the
+> lecture notes and `COURSE-LOG.md`.
 
 - L-T-P: <3-1-0>, weeks: <14>
 - Lecture slots: <42>; topics: <39>; buffer: <3>
@@ -13,7 +14,7 @@
 
 | Week | Lecture | Topic | Unit | CO | Status |
 |---:|---:|---|---:|---|---|
-| 1 | 1 | <topic> | 1 | <CO1> | <planned \| done> |
+| 1 | 1 | <topic> | 1 | <CO1> | <planned \| written \| done> |
 | 1 | 2 | <topic> | 1 | <CO1> | |
 | 1 | 3 | <buffer> | — | — | |
 

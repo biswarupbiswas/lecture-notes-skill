@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Install the teaching skills for Claude Code: /syllabus, /course-plan, /lecture, /tutorial, /assessment.
+# Install the teaching skills for Claude Code:
+#   /syllabus, /course-plan, /lecture, /all-lectures, /tutorial, /assessment.
 #
 #   ./install.sh                 install for your user (works in every project)  -> ~/.claude/skills/<skill>
 #   ./install.sh --project DIR   install only for one project                    -> DIR/.claude/skills/<skill>

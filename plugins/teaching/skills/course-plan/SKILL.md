@@ -15,8 +15,10 @@ Request: `$ARGUMENTS`. Before writing, read `shared/style-core.md` and `shared/c
 `COURSE.md` says `NBA: no`, `shared/nba-obe.md`.
 
 **What the plan is not:**
-- `/lecture` never reads it to choose a topic. The instructor always names each lecture's topic.
-- Tutorials and assessments never take content from it; they use `COURSE-LOG.md`, which records what was taught.
+- `/lecture` never reads it to choose a topic. The instructor names each lecture's topic, either one at a time with
+  `/lecture <topic>` or by approving the topic list in `/all-lectures`.
+- Tutorials and assessments may take their default lecture *range* from it, but never their content. Content comes
+  from the lecture notes and `COURSE-LOG.md`.
 - Nothing from the plan is copied into a student document.
 
 ---
@@ -68,7 +70,8 @@ Request: `$ARGUMENTS`. Before writing, read `shared/style-core.md` and `shared/c
 ## Step 5 — Update mode (`/course-plan update`)
 
 - Compare `COURSE-LOG.md` with the plan.
-- Mark delivered lectures **done**. Note topics that took more or fewer slots than planned.
+- Mark lectures with `Status: delivered` in the log as **done**, and lectures with `Status: prepared` as
+  **written**. Note topics that took more or fewer slots than planned.
 - Re-plan only the **remaining** slots, blocks and assessment ranges. Delivered lectures are never changed.
 - If the remaining topics no longer fit, say which ones and propose options. Do not decide for the instructor.
 
