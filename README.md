@@ -6,10 +6,10 @@ Six skills that build a university course, in any subject, as LaTeX files and PD
 |---|---|
 | `/syllabus` | the syllabus (`Syllabus/syllabus.pdf`) and the course settings file `COURSE.md` |
 | `/course-plan` | the instructor's semester plan (`Plan/plan.md`): lectures week by week, tutorial blocks, assessments |
-| `/lecture <topic>` | one lecture's notes (`LectureN/lectureN.pdf`) |
+| `/lecture <topic>` | one lecture's notes (`Lectures/lectureN.pdf`) |
 | `/all-lectures` | every lecture of the course (or a unit, or a range) from your own syllabus, in order |
-| `/tutorial N` | tutorial sheet N and its full solutions (`TutorialN/`) |
-| `/assessment <name>` | a quiz or exam paper and its solutions and marking scheme (`Assessments/<name>/`) |
+| `/tutorial N` | tutorial sheet N and its full solutions (`Tutorials/`) |
+| `/assessment <name>` | a quiz or exam paper and its solutions and marking scheme (`Assessments/`) |
 
 All documents are **short but complete** and read as if a teacher wrote them by hand. They use a fixed, simple format.
 Every number in them is computed, and every page of every PDF is checked by eye. Tutorials and exams use **only what
@@ -135,10 +135,10 @@ MA2101/
   COURSE-LOG.md          what has been taught and issued (written by /lecture, /tutorial, /assessment)
   Syllabus/syllabus.tex, .pdf
   Plan/plan.md           instructor only
-  Lecture1/lecture1.tex, .pdf
+  Lectures/lecture1.tex, .pdf, lecture2.tex, ...   all lectures in one folder
   ...
-  Tutorial1/tutorial1.tex, tutorial1-solutions.tex, PDFs
-  Assessments/midsem/midsem.tex, midsem-solutions.tex, PDFs
+  Tutorials/tutorial1.tex, tutorial1-solutions.tex, ..., PDFs
+  Assessments/midsem.tex, midsem-solutions.tex, ..., PDFs
 ```
 
 The template for `COURSE.md` is `plugins/teaching/shared/COURSE.template.md`. Besides what is shown in step 1, it can

@@ -6,7 +6,7 @@ argument-hint: "<quiz N | midsem | endsem | name> [lectures a–b] [marks, durat
 
 # /assessment: an exam paper with its marking scheme
 
-Writes `Assessments/<name>/<name>.tex` (the paper) and `Assessments/<name>/<name>-solutions.tex` (solutions and
+Writes `Assessments/<name>.tex` (the paper) and `Assessments/<name>-solutions.tex` (solutions and
 marking scheme), with PDFs. `<name>` is e.g. `quiz1`, `midsem`, `endsem`.
 
 Request: `$ARGUMENTS`. Before writing, read `shared/style-core.md` and `shared/course-log.md`, and, unless

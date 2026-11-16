@@ -19,9 +19,9 @@ Every field is optional, so delete what you don't need.
   - `COURSE.md`, `COURSE-LOG.md` in the course root
   - `Syllabus/syllabus.tex`
   - `Plan/plan.md` (instructor only)
-  - `LectureN/lectureN.tex`
-  - `TutorialN/tutorialN.tex` and `TutorialN/tutorialN-solutions.tex`
-  - `Assessments/<name>/<name>.tex` and `<name>-solutions.tex`
+  - `Lectures/lectureN.tex` (all lectures in one folder, never one folder per lecture)
+  - `Tutorials/tutorialN.tex` and `Tutorials/tutorialN-solutions.tex`
+  - `Assessments/<name>.tex` and `Assessments/<name>-solutions.tex`
 - Official syllabus file (if any): <path; it is used as given and never reworded>
 
 ## Lectures

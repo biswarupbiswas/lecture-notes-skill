@@ -6,7 +6,7 @@ argument-hint: "<sheet number> [lectures a–b] [extra instructions]"
 
 # /tutorial: a tutorial sheet and its solutions
 
-Writes `TutorialN/tutorialN.tex` (students) and `TutorialN/tutorialN-solutions.tex` (instructor and TAs), with PDFs.
+Writes `Tutorials/tutorialN.tex` (students) and `Tutorials/tutorialN-solutions.tex` (instructor and TAs), with PDFs.
 
 Request: `$ARGUMENTS`. Before writing, read `shared/style-core.md` and `shared/course-log.md`, and, unless
 `COURSE.md` says `NBA: no`, `shared/nba-obe.md`.

@@ -35,7 +35,7 @@ Its subject is only an illustration: copy its *format and tone*, never its conte
    - any edits the instructor made by hand, which show their taste. Never undo them.
 
    You may refer back to earlier lectures.
-4. **Output file** follows the course layout (default `LectureN/lectureN.tex`). Never overwrite an existing lecture without asking.
+4. **Output file** follows the course layout (default `Lectures/lectureN.tex`: all lectures in one folder, never one folder per lecture). Never overwrite an existing lecture without asking.
 
 ## Step 2 — Plan, keeping only what the topic needs
 
@@ -84,6 +84,7 @@ Write the code only when COURSE.md or the user asks for it, or the earlier lectu
 - Include a demo that reproduces every example in the notes.
 - Run it and confirm the output matches the notes.
 - Keep the instructor's conventions from earlier scripts.
+- Save it next to the notes, as `Lectures/lectureN.<ext>` in the default layout.
 
 Any co-teacher material that COURSE.md asks for goes in separate files, never in the notes.
 

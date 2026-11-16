@@ -6,7 +6,7 @@ argument-hint: "[path to syllabus] [all | lectures a–b | unit k] [extra instru
 
 # /all-lectures: write all lectures from your syllabus
 
-The instructor writes the syllabus. This skill turns it into lectures, `LectureN/lectureN.tex` and `.pdf`, by
+The instructor writes the syllabus. This skill turns it into lectures, `Lectures/lectureN.tex` and `.pdf` (all in one folder), by
 running the `/lecture` workflow once per lecture, strictly in order, because each lecture reuses the notation,
 examples and results of the ones before it.
 
