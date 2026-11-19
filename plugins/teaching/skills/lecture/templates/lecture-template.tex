@@ -1,16 +1,35 @@
 % Lecture notes template for the /lecture skill (fixed format).
 % Replace every <...>. Keep only the sections this topic needs; copy macros from previous lectures.
 \documentclass[11pt,a4paper]{article}
-\usepackage[margin=2.3cm]{geometry}
+\usepackage[margin=0.8in]{geometry}
 \usepackage{amsmath,amssymb,amsthm,bm}
 \usepackage{booktabs}
 \usepackage{enumitem}
 \usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
 % Only if the lecture has an algorithm:
 % \usepackage{algorithm}
 % \usepackage[noend]{algpseudocode}
 \usepackage{hyperref}
-\hypersetup{colorlinks,linkcolor=blue!50!black,urlcolor=blue!50!black}
+
+% --- Colours ---
+\definecolor{primary}{HTML}{D32F2F}
+\definecolor{secondary}{HTML}{455A64}
+
+\hypersetup{colorlinks, linkcolor=primary, urlcolor=primary,
+    pdftitle={<Course code> - Lecture <N>: <Lecture title>}}
+
+% --- Section titles ---
+\titleformat{\section}{\large\bfseries\color{primary}}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalsize\bfseries\color{secondary}}{\thesubsection}{1em}{}
+
+% --- Page style: running header, page number bottom right ---
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\footnotesize Lecture <N>: <Short lecture title>}
+\rhead{\footnotesize <Course code>: <Course title>}
+\rfoot{\thepage}
 
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}[theorem]{Lemma}
@@ -22,13 +41,15 @@
 
 \newcommand{\R}{\mathbb{R}}
 
-\title{\textbf{<Course code> <Course title>}\\[4pt]
-\large Lecture <N>: <Lecture title>}
-\author{<Instructor>}
-\date{}
-
 \begin{document}
-\maketitle
+
+\begin{center}
+    {\LARGE \bfseries \color{primary} <Course code>: <Course title>} \\[0.5em]
+    {\large \bfseries Lecture <N>: <Lecture title>} \\[0.5em]
+    {\small Instructor: <Instructor>}
+\end{center}
+
+\vspace{1em}
 
 \section{<Motivation>}
 % What students know, and the question this lecture answers. One or two paragraphs.

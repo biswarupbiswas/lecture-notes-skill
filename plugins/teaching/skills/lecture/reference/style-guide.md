@@ -6,8 +6,13 @@ cover. Instructions from the user or from `COURSE.md` override this guide.
 
 ## 1. Format (always the same)
 
-- Use `templates/lecture-template.tex`: a bold course line, then "Lecture N: title" in `\large`, then the author.
-  Number the sections.
+- Use `templates/lecture-template.tex`. Its look is fixed:
+  - a centred title block: the course line in `\LARGE` bold red, "Lecture N: title" in `\large` bold, then
+    "Instructor: name" in `\small`;
+  - 0.8 in margins; red section titles and grey subsection titles;
+  - a running header with "Lecture N: short title" on the left and the course on the right, and the page number at
+    the bottom right.
+- Number the sections.
 - The sections come in this order:
   1. motivation;
   2. core sections;

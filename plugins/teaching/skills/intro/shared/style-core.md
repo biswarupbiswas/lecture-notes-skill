@@ -10,8 +10,9 @@ assessments and solutions. Each skill adds its own rules on top. Instructions fr
 ## 1. Look
 
 - Use plain LaTeX and the skill's own template in `templates/`:
-  - article class, 11pt, A4, 2.3 cm margins;
-  - a bold course line, then the document title in `\large`;
+  - article class, 11pt, A4;
+  - margins, title block and page style exactly as in that template (lecture notes have a coloured title block and a
+    running header; see the lecture style guide);
   - standard theorem environments and `booktabs` tables.
 - Copy the macros and notation of earlier course documents, so all files of one course look alike.
 - **Do not use** coloured boxes, `tcolorbox`, icons, margin notes, emoji or decorative rules.

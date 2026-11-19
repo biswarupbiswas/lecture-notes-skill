@@ -1,14 +1,28 @@
 % Example of the target STYLE for /lecture (subject is only an illustration: copy the style, not the content).
 \documentclass[11pt,a4paper]{article}
-\usepackage[margin=2.3cm]{geometry}
+\usepackage[margin=0.8in]{geometry}
 \usepackage{amsmath,amssymb,amsthm,bm}
 \usepackage{booktabs}
 \usepackage{algorithm}
 \usepackage[noend]{algpseudocode}
 \usepackage{enumitem}
 \usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
 \usepackage{hyperref}
-\hypersetup{colorlinks,linkcolor=blue!50!black,urlcolor=blue!50!black}
+
+\definecolor{primary}{HTML}{D32F2F}
+\definecolor{secondary}{HTML}{455A64}
+\hypersetup{colorlinks, linkcolor=primary, urlcolor=primary}
+
+\titleformat{\section}{\large\bfseries\color{primary}}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalsize\bfseries\color{secondary}}{\thesubsection}{1em}{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\footnotesize Lecture 3: The Jacobi Method}
+\rhead{\footnotesize MA3113: Numerical Linear Algebra with CUDA}
+\rfoot{\thepage}
 
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}[theorem]{Lemma}
@@ -21,13 +35,17 @@
 \newcommand{\norm}[1]{\left\lVert #1\right\rVert}
 \newcommand{\off}{\operatorname{off}}
 
-\title{\textbf{MA3113 Numerical Linear Algebra with CUDA}\\[4pt]
-\large Module 3, Lecture 3: The Jacobi Method for Symmetric Matrices}
-\author{Biswarup Biswas}
-\date{}
+
 
 \begin{document}
-\maketitle
+
+\begin{center}
+    {\LARGE \bfseries \color{primary} MA3113: Numerical Linear Algebra with CUDA} \\[0.5em]
+    {\large \bfseries Module 3, Lecture 3: The Jacobi Method for Symmetric Matrices} \\[0.5em]
+    {\small Instructor: Biswarup Biswas}
+\end{center}
+
+\vspace{1em}
 
 \section{From one eigenvalue to all of them}
 The power method and its variants (Lectures 1 and 2) give us one eigenvalue at a time. If we want
